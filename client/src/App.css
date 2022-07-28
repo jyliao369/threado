@@ -7,3 +7,27 @@
 .appCont {
   display: flex;
 }
+.mainPage {
+  margin: 0% 0% 0% 20.08%;
+}
+
+/* #NAVBAR */
+.navbar {
+  width: 20%;
+  height: 100vh;
+  border-right: solid;
+  border-width: thin;
+  border-color: lightgray;
+  position: fixed;
+}
+
+/* #RANDOMNEWS */
+.randomNews {
+  width: 35%;
+  height: 100vh;
+  border-left: solid;
+  border-width: thin;
+  border-color: lightgray;
+  position: fixed;
+  right: 0;
+}

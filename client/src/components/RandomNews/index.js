@@ -2,7 +2,7 @@ import React from "react";
 
 const RandomNews = () => {
   return (
-    <div>
+    <div className="randomNews">
       <p>RandomNews</p>
     </div>
   );
