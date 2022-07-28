@@ -5,12 +5,22 @@ import NavBar from "./components/NavBar";
 import ShowPost from "./components/ShowPost";
 import RandomNews from "./components/RandomNews";
 import Explore from "./components/Explore";
+import Bookmark from "./components/Bookmark";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import MyThreads from "./components/MyThreads";
+import Profile from "./components/Profile";
+import Settings from "./components/Settings";
+import SinglePost from "./components/SinglePost";
+import SubThreads from "./components/SubThreads";
+import SubThreadsPage from "./components/SubThreadsPage";
 
 function App() {
   return (
     <Router>
       <div className="appCont">
         <NavBar />
+
         <div className="mainPage">
           <Routes>
             <Route
@@ -30,42 +40,42 @@ function App() {
               }
             />
             <Route
-              path="/explore"
+              path="/login"
               element={
                 <>
-                  <Explore />
+                  <Login />
                 </>
               }
             />
             <Route
-              path="/explore"
+              path="/register"
               element={
                 <>
-                  <Explore />
+                  <Register />
                 </>
               }
             />
             <Route
-              path="/explore"
+              path="/profile"
               element={
                 <>
-                  <Explore />
+                  <Profile />
                 </>
               }
             />
             <Route
-              path="/explore"
+              path="/settings"
               element={
                 <>
-                  <Explore />
+                  <Settings />
                 </>
               }
             />
             <Route
-              path="/explore"
+              path="/subthreads"
               element={
                 <>
-                  <Explore />
+                  <SubThreads />
                 </>
               }
             />
