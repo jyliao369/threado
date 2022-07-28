@@ -11,7 +11,7 @@ const Register = () => {
   const [rePassword, setRePassword] = useState("");
 
   const registerUser = () => {
-    Axios.post("http://localhost:3001/registerUser", {
+    Axios.post("https://threado-server.herokuapp.com/registerUser", {
       lastName: lastName,
       firstName: firstName,
       username: username,
@@ -23,7 +23,7 @@ const Register = () => {
   };
 
   return (
-    <div className="explore">
+    <div className="register">
       <p>Register</p>
       <input
         value={lastName}

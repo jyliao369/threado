@@ -32,3 +32,17 @@
   position: fixed;
   right: 0;
 }
+
+/* #REGISTER */
+.register {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* #LOGIN */
+.login {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+}
