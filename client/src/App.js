@@ -1,5 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Axios from "axios";
 
 import NavBar from "./components/NavBar";
 import ShowPost from "./components/ShowPost";
@@ -16,6 +18,26 @@ import SubThreads from "./components/SubThreads";
 import SubThreadsPage from "./components/SubThreadsPage";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState([]);
+  const [isLogged, setIsLoggedIn] = useState(false);
+
+  Axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    Axios.get(`https://threado-server.herokuapp.com/login`, {}).then(
+      (response) => {
+        if (response.data.loggedIn === true) {
+          console.log("Session is in session");
+          console.log(response.data);
+          setIsLoggedIn(response.data.isLogged);
+          setCurrentUser(response.data.user);
+        } else {
+          console.log("no session");
+        }
+      }
+    );
+  }, []);
+
   return (
     <Router>
       <div className="appCont">
@@ -59,7 +81,7 @@ function App() {
               path="/profile"
               element={
                 <>
-                  <Profile />
+                  <Profile currentUser={currentUser} />
                 </>
               }
             />
@@ -75,7 +97,7 @@ function App() {
               path="/subthreads"
               element={
                 <>
-                  <SubThreads />
+                  <SubThreads currentUser={currentUser} />
                 </>
               }
             />

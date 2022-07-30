@@ -14,10 +14,10 @@ const NavBar = () => {
       <Link to="/subthreads">
         <p>Threads</p>
       </Link>
-      <Link to="/subthreads">
+      <Link to="/profile">
         <p>Profile</p>
       </Link>
-      <Link to="/subthreads">
+      <Link to="/bookmark">
         <p>Bookmark</p>
       </Link>
       <Link to="/settings">

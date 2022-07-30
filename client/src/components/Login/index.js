@@ -7,13 +7,20 @@ const Login = () => {
   const [loginPass, setLoginPass] = useState("");
 
   const loginUser = () => {
-    console.log(loginEmail + " " + loginPass);
-    Axios.post(`http://localhost:3001/login`, {
+    Axios.post(`https://threado-server.herokuapp.com/login`, {
       loginEmail: loginEmail,
       loginPass: loginPass,
     }).then((response) => {
       console.log(response);
     });
+  };
+
+  const logoutUser = () => {
+    Axios.get(`https://threado-server.herokuapp.com/logout`, {}).then(
+      (response) => {
+        console.log(response);
+      }
+    );
   };
 
   return (
@@ -30,6 +37,7 @@ const Login = () => {
         placeholder="Password"
       />
       <button onClick={loginUser}>Login</button>
+      <button onClick={logoutUser}>Logout</button>
     </div>
   );
 };

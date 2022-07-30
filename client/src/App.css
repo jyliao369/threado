@@ -35,14 +35,27 @@
 
 /* #REGISTER */
 .register {
-  padding: 5%;
   display: flex;
   flex-direction: column;
 }
 
 /* #LOGIN */
 .login {
-  padding: 5%;
   display: flex;
   flex-direction: column;
+  padding: 5%;
+}
+
+/* #SUBTHREADS */
+.subthreads {
+  display: flex;
+  flex-direction: column;
+}
+.createThreadForm {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: lightgray;
 }
