@@ -14,7 +14,7 @@ const ShowPost = () => {
 
   return (
     <div className="showPost">
-      <p>ShowPost</p>
+      <p>Home</p>
       <div>
         {allPosts.map((post) => (
           <div key={post.postID}>

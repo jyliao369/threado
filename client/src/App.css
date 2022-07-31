@@ -59,3 +59,13 @@
   border-width: thin;
   border-color: lightgray;
 }
+
+/* #SUBTHREADSPAGE */
+.postForm {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: lightgray;
+}

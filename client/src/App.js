@@ -19,7 +19,7 @@ import SubThreadsPage from "./components/SubThreadsPage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState([]);
-  const [isLogged, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   Axios.defaults.withCredentials = true;
 
@@ -30,9 +30,7 @@ function App() {
           console.log("Session is in session");
           console.log(response.data);
           setIsLoggedIn(response.data.isLogged);
-          setCurrentUser(response.data.user);
-        } else {
-          console.log("no session");
+          setCurrentUser(response.data.user[0]);
         }
       }
     );
@@ -41,7 +39,11 @@ function App() {
   return (
     <Router>
       <div className="appCont">
-        <NavBar />
+        <NavBar
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setCurrentUser={setCurrentUser}
+        />
 
         <div className="mainPage">
           <Routes>
@@ -62,18 +64,13 @@ function App() {
               }
             />
             <Route
-              path="/login"
+              path="/subthreads"
               element={
                 <>
-                  <Login />
-                </>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <>
-                  <Register />
+                  <SubThreads
+                    currentUser={currentUser}
+                    isLoggedIn={isLoggedIn}
+                  />
                 </>
               }
             />
@@ -86,6 +83,14 @@ function App() {
               }
             />
             <Route
+              path="/bookmark"
+              element={
+                <>
+                  <Bookmark />
+                </>
+              }
+            />
+            <Route
               path="/settings"
               element={
                 <>
@@ -94,10 +99,36 @@ function App() {
               }
             />
             <Route
-              path="/subthreads"
+              path="/login"
               element={
                 <>
-                  <SubThreads currentUser={currentUser} />
+                  <Login
+                    setCurrentUser={setCurrentUser}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
+                </>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <>
+                  <Register
+                    setCurrentUser={setCurrentUser}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
+                </>
+              }
+            />
+
+            <Route
+              path="/subthread/:subthreadID"
+              element={
+                <>
+                  <SubThreadsPage
+                    currentUser={currentUser}
+                    isLoggedIn={isLoggedIn}
+                  />
                 </>
               }
             />

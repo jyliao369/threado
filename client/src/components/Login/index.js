@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Axios from "axios";
 
-const Login = () => {
+const Login = ({ setCurrentUser, setIsLoggedIn }) => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPass, setLoginPass] = useState("");
 
@@ -11,7 +11,12 @@ const Login = () => {
       loginEmail: loginEmail,
       loginPass: loginPass,
     }).then((response) => {
-      console.log(response);
+      if (response.data.message) {
+      } else {
+        console.log(response.data);
+        setCurrentUser(response.data[0]);
+        setIsLoggedIn(true);
+      }
     });
   };
 

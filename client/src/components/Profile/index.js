@@ -2,10 +2,10 @@ import React from "react";
 
 const Profile = ({ currentUser }) => {
   return (
-    <div className="explore">
+    <div className="profile">
       <p>Profile</p>
-      <p>{currentUser[0].username}</p>
-      <p>{currentUser[0].email}</p>
+      <p>{currentUser.username}</p>
+      <p>{currentUser.email}</p>
     </div>
   );
 };

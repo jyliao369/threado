@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Axios from "axios";
 
-const Register = () => {
+const Register = ({ setIsLoggedIn, setCurrentUser }) => {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [username, setUsername] = useState("");
@@ -19,6 +19,15 @@ const Register = () => {
       password: password,
     }).then((response) => {
       console.log(response);
+      Axios.post(`https://threado-server.herokuapp.com/login`, {
+        loginEmail: email,
+        loginPass: password,
+      }).then((response) => {
+        console.log("hellothere");
+        // console.log(response.data[0]);
+        setCurrentUser(response.data[0]);
+        setIsLoggedIn(true);
+      });
     });
   };
 
