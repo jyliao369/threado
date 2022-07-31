@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 
+import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
+
 const SubThreads = ({ currentUser, isLoggedIn }) => {
   const [threadName, setThreadName] = useState("");
   const [threadDesc, setThreadDesc] = useState("");
@@ -37,7 +39,10 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
 
   return (
     <div className="subthreads">
-      <p>SubThreads</p>
+      <div className="pageBanner">
+        <FormatListBulletedOutlinedIcon />
+        <p>SubThreads</p>
+      </div>
 
       {isLoggedIn === false ? (
         <></>

@@ -31,11 +31,12 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
   };
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/getSubthread/${subthreadID}`, {}).then(
-      (response) => {
-        setCurSubThread(response.data[0]);
-      }
-    );
+    Axios.get(
+      `https://threado-server.herokuapp.com/getSubthread/${subthreadID}`,
+      {}
+    ).then((response) => {
+      setCurSubThread(response.data[0]);
+    });
 
     Axios.get(
       `https://threado-server.herokuapp.com/subthread/${subthreadID}`,

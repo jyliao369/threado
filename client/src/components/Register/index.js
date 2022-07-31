@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 const Register = ({ setIsLoggedIn, setCurrentUser }) => {
   const [lastName, setLastName] = useState("");
@@ -70,6 +71,10 @@ const Register = ({ setIsLoggedIn, setCurrentUser }) => {
       >
         Register
       </button>
+      <p>Already have an account?</p>
+      <Link to={"/login"}>
+        <p>Click here to log in</p>
+      </Link>
     </div>
   );
 };

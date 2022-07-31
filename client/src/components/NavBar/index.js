@@ -2,6 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
+import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
+import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
+
 const NavBar = ({ isLoggedIn, setIsLoggedIn, setCurrentUser }) => {
   const logoutUser = () => {
     Axios.get(`https://threado-server.herokuapp.com/logout`, {}).then(() => {
@@ -12,42 +22,75 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setCurrentUser }) => {
   };
 
   return (
-    <div className="navbar">
-      <p>NavBar</p>
-      <Link to="/">
-        <p>Home</p>
-      </Link>
-      <Link to="/explore">
-        <p>Explore</p>
-      </Link>
-      <Link to="/subthreads">
-        <p>Threads</p>
-      </Link>
+    <div className="navbarPage">
+      <div className="navbar">
+        <p>ThreadOh!!</p>
+        <Link to="/">
+          <div>
+            <HomeOutlinedIcon />
+            <p>Home</p>
+          </div>
+        </Link>
+        <Link to="/explore">
+          <div>
+            <ExploreOutlinedIcon />
+            <p>Explore</p>
+          </div>
+        </Link>
+        <Link to="/subthreads">
+          <div>
+            <FormatListBulletedOutlinedIcon />
+            <p>Threads</p>
+          </div>
+        </Link>
 
-      {isLoggedIn === false ? (
-        <>
+        {isLoggedIn === false ? (
+          <></>
+        ) : (
+          <>
+            <Link to="/profile">
+              <div>
+                <AccountCircleOutlinedIcon />
+                <p>Profile</p>
+              </div>
+            </Link>
+            <Link to="/bookmark">
+              <div>
+                <BookmarkBorderOutlinedIcon />
+                <p>Bookmark</p>
+              </div>
+            </Link>
+            <Link to="/mythreads/:userID">
+              <div>
+                <ListAltOutlinedIcon />
+                <p>Bookmark</p>
+              </div>
+            </Link>
+            <Link to="/settings">
+              <div>
+                <SettingsOutlinedIcon />
+                <p>Settings</p>
+              </div>
+            </Link>
+          </>
+        )}
+      </div>
+
+      <div className="logRegBtn">
+        {isLoggedIn === false ? (
           <Link to="/login">
-            <p>Login</p>
+            <div className="logReg">
+              <LoginOutlinedIcon />
+              <p>Login</p>
+            </div>
           </Link>
-        </>
-      ) : (
-        <>
-          <Link to="/profile">
-            <p>Profile</p>
-          </Link>
-          <Link to="/bookmark">
-            <p>Bookmark</p>
-          </Link>
-          <Link to="/settings">
-            <p>Settings</p>
-          </Link>
-          <p onClick={logoutUser}>Logout</p>
-        </>
-      )}
-
-      <Link to="/register">
-        <p>Register</p>
-      </Link>
+        ) : (
+          <div className="logReg">
+            <LogoutOutlinedIcon />
+            <p onClick={logoutUser}>Logout</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

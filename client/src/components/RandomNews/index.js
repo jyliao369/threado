@@ -2,8 +2,10 @@ import React from "react";
 
 const RandomNews = () => {
   return (
-    <div className="randomNews">
-      <p>RandomNews</p>
+    <div className="randomNewsPage">
+      <div>
+        <p>RandomNews</p>
+      </div>
     </div>
   );
 };

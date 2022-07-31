@@ -132,6 +132,22 @@ function App() {
                 </>
               }
             />
+            <Route
+              path="/post/:postID"
+              element={
+                <>
+                  <SinglePost />
+                </>
+              }
+            />
+            <Route
+              path="/mythreads/:userID"
+              element={
+                <>
+                  <MyThreads />
+                </>
+              }
+            />
           </Routes>
         </div>
 
