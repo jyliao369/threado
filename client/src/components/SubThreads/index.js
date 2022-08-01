@@ -31,7 +31,7 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
   };
 
   const openCreateThread = () => {
-    if (document.getElementById("createThreadForm").style.display === "none") {
+    if (document.getElementById("createThreadForm").style.display !== "flex") {
       document.getElementById("createThreadForm").style.display = "flex";
     } else {
       document.getElementById("createThreadForm").style.display = "none";
@@ -85,7 +85,7 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
             <div className="threadNameCont">
               <div className="threadNameBorder">
                 <div className="threadNameBody">
-                  <h3>{thread.threadName}</h3>
+                  <h3>/{thread.threadName}</h3>
                 </div>
               </div>
             </div>
