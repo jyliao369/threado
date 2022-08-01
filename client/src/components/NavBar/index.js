@@ -63,7 +63,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setCurrentUser }) => {
             <Link to="/mythreads/:userID">
               <div>
                 <ListAltOutlinedIcon />
-                <p>Bookmark</p>
+                <p>My Threads</p>
               </div>
             </Link>
             <Link to="/settings">

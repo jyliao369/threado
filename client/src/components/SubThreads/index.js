@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Axios from "axios";
 
 import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
 const SubThreads = ({ currentUser, isLoggedIn }) => {
   const [threadName, setThreadName] = useState("");
@@ -28,6 +30,14 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
     });
   };
 
+  const openCreateThread = () => {
+    if (document.getElementById("createThreadForm").style.display === "none") {
+      document.getElementById("createThreadForm").style.display = "flex";
+    } else {
+      document.getElementById("createThreadForm").style.display = "none";
+    }
+  };
+
   useEffect(() => {
     Axios.get(`https://threado-server.herokuapp.com/allThreads`, {}).then(
       (response) => {
@@ -44,10 +54,16 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
         <p>SubThreads</p>
       </div>
 
+      <div className="searchCreateBtn">
+        <input placeholder="Search..." />
+        <button>Search</button>
+        <button onClick={() => openCreateThread()}>+Create</button>
+      </div>
+
       {isLoggedIn === false ? (
         <></>
       ) : (
-        <div className="createThreadForm">
+        <div className="createThreadForm" id="createThreadForm">
           <input
             value={threadName}
             onChange={(e) => setThreadName(e.target.value)}
@@ -65,12 +81,33 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
 
       <div className="allThreads">
         {threadList.map((thread) => (
-          <div key={thread.subthreadID}>
-            <Link to={`/subthread/${thread.subthreadID}`}>
-              <p>{thread.threadName}</p>
-              <p>{thread.threadDesc}</p>
-            </Link>
-            <br />
+          <div key={thread.subthreadID} className="threadCont">
+            <div className="threadNameCont">
+              <div className="threadNameBorder">
+                <div className="threadNameBody">
+                  <h3>{thread.threadName}</h3>
+                </div>
+              </div>
+            </div>
+            <div className="threadBorder">
+              <div className="threadBody">
+                <Link to={`/subthread/${thread.subthreadID}`}>
+                  <p>{thread.threadDesc}</p>
+                </Link>
+              </div>
+            </div>
+            <div className="threadInfoCont">
+              <div className="threadInfo">
+                <div>
+                  <GroupsOutlinedIcon />
+                  <p>users</p>
+                </div>
+                <div>
+                  <CalendarMonthOutlinedIcon />
+                  <p> *date</p>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>

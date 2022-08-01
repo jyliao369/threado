@@ -7,9 +7,186 @@
 .appCont {
   display: flex;
 }
-.mainPage {
+
+/* --------------------------------------------------------------------------------------------- */
+/* #GENERALPOSTDESIGN */
+.postCont {
+  display: flex;
+  align-items: center;
+  margin: 30px 1% 40px 1%;
+}
+.postProfileIconBorder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 115px;
+  width: 115px;
+  background: black;
+  padding: 5px;
+  clip-path: polygon(0% 50%, 50% 0%, 100% 50%, 50% 100%);
+}
+.postProfileIconBody {
+  width: 95%;
+  height: 95%;
+  overflow-wrap: break-word;
+  background: white;
+  clip-path: polygon(0% 50%, 50% 0%, 100% 50%, 50% 100%);
+}
+.postUsername {
+  border-style: solid;
+  border-radius: 50px;
+  padding: 5px 20px 5px 20px;
+  background: white;
+  position: absolute;
+  z-index: 1;
+  transform: rotate(-45deg);
+  margin: -45px 0px 0px 35px;
+}
+.generalPostCont {
   width: 100%;
-  margin: 0% 35% 0% 20.08%;
+  margin: 0px 0px 0px 30px;
+}
+.generalPostTitleCont {
+  display: flex;
+  justify-content: flex-start;
+}
+.generalPostTitleBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+  position: absolute;
+  z-index: 1;
+  margin: -1% 0% 0% 1.5%;
+}
+.generalPostTitleBody {
+  background: white;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+}
+.generalPostTitleBody h4 {
+  padding: 10px 15px 10px 15px;
+}
+.generalPostBorder {
+  background: black;
+  padding: 10px;
+  clip-path: polygon(5% 5%, 99% 0%, 95% 98%, 0% 95%);
+}
+.generalPostBody {
+  background: white;
+  clip-path: polygon(5% 5%, 99% 0%, 95% 98%, 0% 95%);
+}
+.generalPostBody p {
+  padding: 3.6% 6.2% 3.6% 6.2%;
+}
+.generalPostDateTimeCont {
+  display: flex;
+  justify-content: flex-end;
+}
+.generalPostDateTimeBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+  position: absolute;
+  margin: -1.5% 2.5% 0% 0%;
+}
+.generalPostDateTimeBody {
+  background: white;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+}
+.generalPostDateTimeBody p {
+  padding: 4% 20px 4% 15px;
+}
+.likeCom {
+  display: flex;
+  position: absolute;
+  margin: -1.25% 0% 0% 2%;
+}
+.likeCom div {
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
+  padding: 3%;
+  background: white;
+  margin: 0px 10px 0px 0px;
+}
+
+/* #THREADBANNER */
+.allThreads {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.threadCont {
+  width: 85%;
+  margin: 3% 0% 4% 0%;
+}
+.threadNameCont {
+  display: flex;
+}
+.threadNameBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(
+    10% 100%,
+    0% 66%,
+    0% 33%,
+    10% 0%,
+    90% 0%,
+    100% 35%,
+    100% 66%,
+    90% 100%
+  );
+  position: absolute;
+  z-index: 1;
+  margin: -0.5% 0% 0% 2%;
+}
+.threadNameBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px 5px 10px;
+  background: white;
+  clip-path: polygon(
+    10% 100%,
+    0% 66%,
+    0% 33%,
+    10% 0%,
+    90% 0%,
+    100% 35%,
+    100% 66%,
+    90% 100%
+  );
+}
+.threadBorder {
+  background: black;
+  padding: 10px;
+  clip-path: polygon(3% 100%, 2% 5%, 99% 0%, 97% 90%);
+}
+.threadBody {
+  background: white;
+  clip-path: polygon(3% 100%, 2% 5%, 99% 0%, 97% 90%);
+}
+.threadBody p {
+  padding: 5% 4.5% 4% 5.5%;
+}
+.threadInfoCont {
+  display: flex;
+}
+.threadInfo {
+  display: flex;
+  position: absolute;
+  margin: -1.25% 0% 0% 3%;
+}
+.threadInfo div {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 2%;
+  margin: 0px 15px 0px 0px;
+  border-style: solid;
+  border-width: thick;
+  border-color: black;
 }
 
 /* #PAGEBANNER */
@@ -23,6 +200,7 @@
   border-color: lightgray;
 }
 
+/* --------------------------------------------------------------------------------------------- */
 /* #NAVBAR */
 .navbarPage {
   display: flex;
@@ -53,9 +231,15 @@
   margin: 10px 0px 10px 0px;
 }
 
+/* #MAINPAGE */
+.mainPage {
+  width: 100%;
+  margin: 0% 30% 0% 20.08%;
+}
+
 /* #RANDOMNEWS */
 .randomNewsPage {
-  width: 35%;
+  width: 30%;
   height: 100vh;
   border-left: solid;
   border-width: thin;
@@ -83,6 +267,17 @@
   display: flex;
   flex-direction: column;
 }
+.searchCreateBtn {
+  display: flex;
+  flex-direction: row;
+  padding: 2%;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: lightgray;
+}
+.searchCreateBtn input {
+  width: 100%;
+}
 .createThreadForm {
   display: flex;
   flex-direction: column;
@@ -90,6 +285,9 @@
   border-bottom: solid;
   border-width: thin;
   border-color: lightgray;
+}
+#createThreadForm {
+  display: none;
 }
 
 /* #SUBTHREADSPAGE */
@@ -116,9 +314,12 @@
 /* #EXPLOREPAGE */
 .searchInput {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 2%;
   border-bottom: solid;
   border-width: thin;
   border-color: lightgray;
+}
+.searchInput input {
+  width: 100%;
 }
