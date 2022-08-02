@@ -41,6 +41,7 @@ const Login = ({ setCurrentUser, setIsLoggedIn }) => {
         value={loginPass}
         onChange={(e) => setLoginPass(e.target.value)}
         placeholder="Password"
+        type={"password"}
       />
       <button onClick={loginUser}>Login</button>
       <button onClick={logoutUser}>Logout</button>

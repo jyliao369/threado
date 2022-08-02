@@ -2,9 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 
 const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
   const { subthreadID } = useParams();
@@ -36,10 +39,10 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
   };
 
   const openPostForm = () => {
-    if (document.getElementById("postForm").style.display !== "flex") {
-      document.getElementById("postForm").style.display = "flex";
+    if (document.getElementById("postFormCont").style.display !== "flex") {
+      document.getElementById("postFormCont").style.display = "flex";
     } else {
-      document.getElementById("postForm").style.display = "none";
+      document.getElementById("postFormCont").style.display = "none";
     }
   };
 
@@ -77,6 +80,15 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
               </div>
             </div>
           </div>
+          {isLoggedIn === false ? (
+            <></>
+          ) : (
+            <div className="addPostBtnCont">
+              <div className="addPostBtn">
+                <button onClick={() => openPostForm()}>Add Post</button>
+              </div>
+            </div>
+          )}
           <div className="threadBorder">
             <div className="threadBody">
               <p>{curThreadDesc}</p>
@@ -94,42 +106,105 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
               </div>
             </div>
           </div>
-          <div className="addPostBtnCont">
-            <div className="addPostBtn">
-              <button onClick={() => openPostForm()}>Add Post</button>
-            </div>
-          </div>
         </div>
       </div>
 
       {isLoggedIn === false ? (
         <></>
       ) : (
-        <div className="postForm" id="postForm">
-          <input
-            value={postTitle}
-            onChange={(e) => setPostTitle(e.target.value)}
-            placeholder="Post Title"
-          />
-          <textarea
-            value={postBody}
-            onChange={(e) => setPostBody(e.target.value)}
-            row={5}
-            placeholder="Post Body"
-          />
-          <button onClick={submitPost}>Post</button>
+        <div className="postFormCont" id="postFormCont">
+          <div className="addPostForm">
+            <div className="postTitleFormCont">
+              <div className="postTitleFormBorder">
+                <div className="postTitleFormBody">
+                  <input
+                    value={postTitle}
+                    onChange={(e) => setPostTitle(e.target.value)}
+                    placeholder="Post Title"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="postBodyFormBorder">
+              <div className="postBodyFormBody">
+                <textarea
+                  value={postBody}
+                  onChange={(e) => setPostBody(e.target.value)}
+                  row={5}
+                  placeholder="Post Body"
+                />
+              </div>
+            </div>
+
+            <div className="postFormBtnCont">
+              <div className="postFormBtn">
+                <button onClick={submitPost}>Post</button>
+              </div>
+            </div>
+          </div>
+          <div className="postProfileIconCont">
+            <div className="postProfileIconBorder">
+              <div className="postProfileIconBody"></div>
+            </div>
+            <div className="postUsername">
+              <p>{currentUser.username}</p>
+            </div>
+          </div>
         </div>
       )}
 
-      <br />
-
       <div>
         {threadPost.map((post) => (
-          <div key={post.postID}>
-            <p>{post.postTitle}</p>
-            <p>{post.postBody}</p>
-            <br />
+          <div key={post.postID} className="postCont">
+            <div className="postProfileIconCont">
+              <div className="postProfileIconBorder">
+                <div className="postProfileIconBody"></div>
+              </div>
+              <div className="postUsername">
+                <p>{post.username}</p>
+              </div>
+            </div>
+
+            <div className="generalPostCont">
+              <div className="generalPostTitleCont">
+                <div className="generalPostTitleBorder">
+                  <div className="generalPostTitleBody">
+                    <h4>{post.postTitle.slice(0, 60)}</h4>
+                  </div>
+                </div>
+              </div>
+              <Link to={`/post/${post.postID}`}>
+                <div className="generalPostBorder">
+                  <div className="generalPostBody">
+                    <p>{post.postBody}</p>
+                  </div>
+                </div>
+              </Link>
+              <div className="generalPostDateTimeCont">
+                <div className="generalPostDateTimeBorder">
+                  <div className="generalPostDateTimeBody">
+                    <p>Posted On: *Time goes here</p>
+                  </div>
+                </div>
+              </div>
+              <div className="likeCom">
+                <div>
+                  <FavoriteBorderOutlinedIcon />
+                  <p>likes</p>
+                </div>
+                <div>
+                  <ChatBubbleOutlineOutlinedIcon />
+                  <p>comments</p>
+                </div>
+              </div>
+            </div>
           </div>
+          // <div key={post.postID}>
+          //   <p>{post.postTitle}</p>
+          //   <p>{post.postBody}</p>
+          //   <br />
+          // </div>
         ))}
       </div>
     </div>

@@ -6,12 +6,16 @@ import Axios from "axios";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 
-const SinglePost = () => {
+const SinglePost = ({ isLoggedIn, currentUser }) => {
   const { postID } = useParams();
 
   const [postOP, setPostOP] = useState(" ");
   const [postTitle, setPostTitle] = useState(" ");
   const [postBody, setPostBody] = useState(" ");
+
+  const [commentBody, setCommentBody] = useState("");
+
+  const [allPostComment, setAllPostComment] = useState([]);
 
   const openCommentForm = () => {
     if (document.getElementById("commentForm").style.display !== "flex") {
@@ -21,13 +25,40 @@ const SinglePost = () => {
     }
   };
 
-  useEffect(() => {
-    Axios.get(`http://localhost:3001/post/${postID}`, {}).then((response) => {
-      // console.log(response.data[0]);
+  const postComment = () => {
+    // console.log(currentUser.username);
+    // console.log(currentUser.userID);
+    // console.log(commentBody);
 
-      setPostOP(response.data[0].username);
-      setPostTitle(response.data[0].postTitle);
-      setPostBody(response.data[0].postBody);
+    Axios.post(`https://threado-server.herokuapp.com/addComment`, {
+      postID: postID,
+      userID: currentUser.userID,
+      username: currentUser.username,
+      commentBody: commentBody,
+    }).then((response) => {
+      console.log(response);
+      setCommentBody("");
+      document.getElementById("commentForm").style.display = "none";
+    });
+  };
+
+  useEffect(() => {
+    Axios.get(`https://threado-server.herokuapp.com/post/${postID}`, {}).then(
+      (response) => {
+        // console.log(response.data[0]);
+
+        setPostOP(response.data[0].username);
+        setPostTitle(response.data[0].postTitle);
+        setPostBody(response.data[0].postBody);
+      }
+    );
+
+    Axios.get(
+      `https://threado-server.herokuapp.com/getPostComment/${postID}`,
+      {}
+    ).then((response) => {
+      // console.log(response.data);
+      setAllPostComment(response.data);
     });
   }, []);
 
@@ -53,11 +84,15 @@ const SinglePost = () => {
               </div>
             </div>
 
-            <div className="commentFormBtnCont">
-              <div className="commentFormBtn">
-                <button onClick={() => openCommentForm()}>Add Comment</button>
+            {isLoggedIn === false ? (
+              <></>
+            ) : (
+              <div className="commentFormBtnCont">
+                <div className="commentFormBtn">
+                  <button onClick={() => openCommentForm()}>Add Comment</button>
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="generalPostBorder">
               <div className="generalPostBody">
@@ -87,10 +122,52 @@ const SinglePost = () => {
       </div>
 
       <div className="commentForm" id="commentForm">
-        <textarea placeholder="Comment" />
-        <button>Submit</button>
+        <div className="commentFormCont">
+          <div className="commentFormBorder">
+            <div className="commentFormBody">
+              <textarea
+                value={commentBody}
+                onChange={(e) => setCommentBody(e.target.value)}
+                placeholder="Comment"
+                rows={3}
+              />
+            </div>
+          </div>
+          <div className="commentBtnCont">
+            <div className="commentBtn">
+              <button onClick={() => postComment()}>Comment</button>
+            </div>
+          </div>
+        </div>
+        <div className="postProfileIconCont">
+          <div className="postProfileIconBorder">
+            <div className="postProfileIconBody"></div>
+          </div>
+          <div className="postUsername">
+            <p>{currentUser.username}</p>
+          </div>
+        </div>
       </div>
-      <div></div>
+
+      <div>
+        {allPostComment.map((comment) => (
+          <div key={comment.commentID} className="commentCont">
+            <div className="postProfileIconCont">
+              <div className="postProfileIconBorder">
+                <div className="postProfileIconBody"></div>
+              </div>
+              <div className="postUsername">
+                <p>{comment.username}</p>
+              </div>
+            </div>
+            <div className="commentBorder">
+              <div className="commentBody">
+                <p>{comment.commentBody}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

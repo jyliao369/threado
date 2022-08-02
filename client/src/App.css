@@ -201,6 +201,28 @@
   border-color: lightgray;
 }
 
+/* #GENERALTHEMEOFCOMMENT*/
+.commentCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 10px 20px 10px;
+}
+.commentBorder {
+  width: 80%;
+  background: black;
+  padding: 10px;
+  clip-path: polygon(8% 1%, 0% 20%, 5% 97%, 92% 95%, 98% 76%, 95% 4%);
+}
+.commentBody {
+  background: white;
+  clip-path: polygon(8% 1%, 0% 20%, 5% 97%, 92% 95%, 98% 76%, 95% 4%);
+}
+.commentBody p {
+  padding: 20px 80px 20px 80px;
+}
+
 /* --------------------------------------------------------------------------------------------- */
 /* #NAVBAR */
 .navbarPage {
@@ -305,7 +327,8 @@
 }
 .addPostBtn {
   position: absolute;
-  margin: -1.65% 2.5% 0px 0px;
+  margin: -0.65% 2.5% 0px 0px;
+  z-index: 1;
 }
 .addPostBtn button {
   padding: 7px;
@@ -313,16 +336,69 @@
   border-style: solid;
   border-width: thick;
 }
-.postForm {
+.postFormCont {
   display: flex;
-  flex-direction: column;
-  padding: 2%;
+  flex-direction: row;
+  align-items: center;
+  padding: 25px 40px 30px 20px;
   border-bottom: solid;
   border-width: thin;
   border-color: lightgray;
 }
-#postForm {
+.addPostForm {
+  width: 100%;
+}
+#postFormCont {
   display: none;
+}
+.postTitleFormCont {
+  display: flex;
+}
+.postTitleFormBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+  position: absolute;
+  z-index: 1;
+  margin: -0.75% 0% 0% 3%;
+}
+.postTitleFormBody {
+  background: white;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+}
+.postTitleFormBody input {
+  padding: 10px 20px 10px 20px;
+  border: none;
+  outline: none;
+}
+.postBodyFormBorder {
+  background: black;
+  padding: 10px;
+  clip-path: polygon(5% 5%, 99% 0%, 95% 98%, 0% 95%);
+}
+.postBodyFormBody {
+  background: white;
+  clip-path: polygon(5% 5%, 99% 0%, 95% 98%, 0% 95%);
+  padding: 30px 60px 25px 60px;
+}
+.postBodyFormBody textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.postFormBtnCont {
+  display: flex;
+  justify-content: flex-end;
+}
+.postFormBtn {
+  position: absolute;
+  margin: -1.3% 4% 0% 0%;
+}
+.postFormBtn button {
+  padding: 6px;
+  border-style: solid;
+  border-width: thick;
+  background: white;
 }
 
 /* #SINGLEPOSTPAGE */
@@ -348,14 +424,49 @@
 }
 .commentForm {
   display: flex;
-  flex-direction: column;
-  padding: 2%;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
   border-bottom: solid;
   border-width: thin;
   border-color: lightgray;
+  padding: 15px 20px 30px 5px;
 }
 #commentForm {
   display: none;
+}
+.commentFormCont {
+  width: 80%;
+}
+.commentFormBorder {
+  background: black;
+  padding: 10px;
+  clip-path: polygon(8% 1%, 0% 20%, 5% 97%, 92% 95%, 98% 76%, 95% 4%);
+}
+.commentFormBody {
+  background: white;
+  clip-path: polygon(8% 1%, 0% 20%, 5% 97%, 92% 95%, 98% 76%, 95% 4%);
+  padding: 15px 55px 15px 55px;
+}
+.commentFormBody textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.commentBtnCont {
+  display: flex;
+  justify-content: flex-end;
+}
+.commentBtn {
+  position: absolute;
+  margin: -1.2% 5% 0% 0%;
+}
+.commentBtn button {
+  padding: 5px;
+  border-style: solid;
+  border-width: thick;
+  background: white;
+  cursor: pointer;
 }
 
 /* #EXPLOREPAGE */

@@ -85,7 +85,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setCurrentUser }) => {
             </div>
           </Link>
         ) : (
-          <div className="logReg">
+          <div className="logReg" style={{ cursor: "pointer" }}>
             <LogoutOutlinedIcon />
             <p onClick={logoutUser}>Logout</p>
           </div>

@@ -136,7 +136,10 @@ function App() {
               path="/post/:postID"
               element={
                 <>
-                  <SinglePost />
+                  <SinglePost
+                    isLoggedIn={isLoggedIn}
+                    currentUser={currentUser}
+                  />
                 </>
               }
             />
