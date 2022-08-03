@@ -25,6 +25,8 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
         (response) => {
           console.log(response);
           setThreadList(response.data);
+          setThreadName("");
+          setThreadDesc("");
         }
       );
     });

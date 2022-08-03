@@ -13,7 +13,7 @@
 .postCont {
   display: flex;
   align-items: center;
-  padding: 30px 3% 40px 3%;
+  padding: 30px 3% 20px 3%;
 }
 .postProfileIconBorder {
   display: flex;
@@ -119,7 +119,7 @@
 }
 .threadCont {
   width: 85%;
-  margin: 3% 0% 4% 0%;
+  margin: 3% 0% 2% 0%;
 }
 .threadNameCont {
   display: flex;
@@ -223,6 +223,43 @@
   padding: 20px 80px 20px 80px;
 }
 
+/* #RANDOMNEWS */
+.randNewsCont {
+  padding: 25px 20px 5px 20px;
+}
+.randTitleCont {
+  display: flex;
+}
+.randTitleBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+  position: absolute;
+  z-index: 1;
+  margin: -15px 0px 0px 25px;
+}
+.randTitleBody {
+  background: white;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+}
+.randTitleBody h4 {
+  padding: 5px 15px 5px 15px;
+}
+.randNewBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(1% 0%, 99% 1%, 98% 97%, 2% 100%);
+  border-radius: 35px;
+}
+.randNewBody {
+  background: white;
+  clip-path: polygon(1% 0%, 99% 1%, 98% 97%, 2% 100%);
+  border-radius: 35px;
+}
+.randNewBody p {
+  padding: 25px 30px 15px 30px;
+}
+
 /* --------------------------------------------------------------------------------------------- */
 /* #NAVBAR */
 .navbarPage {
@@ -262,6 +299,9 @@
 
 /* #RANDOMNEWS */
 .randomNewsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 30%;
   height: 100vh;
   border-left: solid;
@@ -269,6 +309,19 @@
   border-color: lightgray;
   position: fixed;
   right: 0;
+  overflow-y: scroll;
+}
+.randomNewsPage::-webkit-scrollbar {
+  display: none;
+}
+.randomNewsPage h3 {
+  padding: 20px 0px 20px 0px;
+}
+.nextBackBtn {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 0px 15px 0px;
 }
 
 /* #REGISTER */

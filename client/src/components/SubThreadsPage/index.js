@@ -34,6 +34,9 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
       ).then((response) => {
         // console.log(response);
         setThreadPost(response.data.reverse());
+        setPostTitle("");
+        setPostBody("");
+        document.getElementById("postFormCont").style.display = "none";
       });
     });
   };
