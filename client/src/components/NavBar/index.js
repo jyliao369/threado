@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -18,8 +18,11 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setCurrentUser }) => {
       // console.log(response);
       setIsLoggedIn(false);
       setCurrentUser([]);
+      navToHome("/");
     });
   };
+
+  const navToHome = useNavigate();
 
   return (
     <div className="navbarPage">

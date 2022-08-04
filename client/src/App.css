@@ -328,14 +328,102 @@
 .register {
   display: flex;
   flex-direction: column;
-  padding: 5%;
+  padding: 8%;
+  align-items: center;
+}
+.regFormBorder {
+  width: 70%;
+  padding: 10px;
+  background: black;
+  clip-path: polygon(0% 10%, 15% 0%, 100% 0%, 100% 90%, 85% 100%, 0% 100%);
+}
+.regFormBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 325px;
+  padding: 55px 40px 55px 40px;
+  background: white;
+  clip-path: polygon(4% 14%, 14% 3%, 100% 0%, 96% 87%, 85% 97%, 0% 100%);
+}
+.regForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regFormPartCont {
+  display: flex;
+}
+.regFormPart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regFormPart button {
+  margin: 0px 0px 15px 0px;
+}
+.regFormPartTwo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regFormPartTwo button {
+  margin: 0px 0px 15px 0px;
 }
 
 /* #LOGIN */
 .login {
   display: flex;
   flex-direction: column;
-  padding: 5%;
+  align-items: center;
+  padding: 8%;
+}
+.loginTitle {
+  position: absolute;
+  z-index: 1;
+  margin: -15px 0px 0px 0px;
+}
+.loginTitle h2 {
+  padding: 5px 10px 5px 10px;
+  background: white;
+  border-style: solid;
+  border-width: thick;
+}
+.loginFormBorder {
+  width: 50%;
+  padding: 10px;
+  background: black;
+  clip-path: polygon(0% 10%, 15% 0%, 100% 0%, 100% 90%, 85% 100%, 0% 100%);
+}
+.loginFormBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 275px;
+  padding: 50px 40px 40px 40px;
+  background: white;
+  clip-path: polygon(4% 14%, 14% 3%, 100% 0%, 96% 87%, 85% 97%, 0% 100%);
+}
+.loginFormBody h3 {
+  padding: 10px;
+}
+.inputBorder {
+  padding: 8px;
+  margin: 0px 10px 10px 10px;
+  background: black;
+  clip-path: polygon(7% 5%, 105% 5%, 95% 93%, -6% 98%);
+}
+.inputBody {
+  background: white;
+  clip-path: polygon(5% 0%, 105% 0%, 95% 100%, -5% 100%);
+}
+.inputBody input {
+  padding: 10px 15px 10px 15px;
+  font-size: 15px;
+  border: none;
+  outline: none;
 }
 
 /* #SUBTHREADS */
@@ -459,6 +547,7 @@
   border-bottom: solid;
   border-width: thin;
   border-color: lightgray;
+  padding: 0px 0px 20px 0px;
 }
 .commentFormBtnCont {
   display: flex;

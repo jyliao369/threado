@@ -10,24 +10,30 @@ const RandomNews = () => {
   const [maxPage, setMaxPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
 
+  const newsLimit = 5;
+
   const nextBack = (nextBack) => {
     if (nextBack === "next") {
-      console.log(nextBack);
       setCurrentPage(currentPage + 1);
       // console.log(
       //   allPosts.slice(0 + 10 * (currentPage + 1), 10 + 10 * (currentPage + 1))
       // );
       setCurrentNews(
-        allPosts.slice(0 + 10 * (currentPage + 1), 10 + 10 * (currentPage + 1))
+        allPosts.slice(
+          0 + newsLimit * (currentPage + 1),
+          newsLimit + newsLimit * (currentPage + 1)
+        )
       );
     } else {
-      console.log(nextBack);
       setCurrentPage(currentPage - 1);
       // console.log(
       //   allPosts.slice(0 + 10 * (currentPage - 1), 10 + 10 * (currentPage - 1))
       // );
       setCurrentNews(
-        allPosts.slice(0 + 10 * (currentPage - 1), 10 + 10 * (currentPage - 1))
+        allPosts.slice(
+          0 + newsLimit * (currentPage - 1),
+          newsLimit + newsLimit * (currentPage - 1)
+        )
       );
     }
   };
@@ -37,9 +43,9 @@ const RandomNews = () => {
       // console.log(Math.ceil(response.data.length / 10));
       console.log(response.data.reverse());
 
-      setMaxPage(Math.ceil(response.data.length / 10));
+      setMaxPage(Math.ceil(response.data.length / newsLimit));
       setAllPosts(response.data.reverse());
-      setCurrentNews(response.data.reverse().slice(0, 10));
+      setCurrentNews(response.data.reverse().slice(0, newsLimit));
     });
   }, []);
 
@@ -55,8 +61,15 @@ const RandomNews = () => {
           <button onClick={() => nextBack("back")}>Back</button>
         )}
 
-        <p>{currentPage + 1}</p>
-        <button onClick={() => nextBack("next")}>Next</button>
+        <p>
+          {"<"} {currentPage + 1} {">"}
+        </p>
+
+        {currentPage + 1 === maxPage ? (
+          <button disabled={true}>Next</button>
+        ) : (
+          <button onClick={() => nextBack("next")}>Next</button>
+        )}
       </div>
       <div className="randNewsAll">
         {currentNews.map((post) => (
