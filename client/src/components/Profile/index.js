@@ -79,11 +79,31 @@ const Profile = ({ currentUser }) => {
       </div>
 
       <div className="profileNav">
-        <button onClick={() => getUserPost()}>Posts</button>
-        <button onClick={() => getUserComment()}>Comments</button>
-        <button onClick={() => getUserThreads()}>My Threads</button>
-        {/* <button onClick={() => getFollowing()}>Following</button>
-        <button onClick={() => getFollower()}>Followers</button> */}
+        <div className="profileNavBtnBorder">
+          <div className="profileNavBtnBody">
+            <button onClick={() => getUserPost()}>Posts</button>
+          </div>
+        </div>
+        <div className="profileNavBtnBorder">
+          <div className="profileNavBtnBody">
+            <button onClick={() => getUserComment()}>Comments</button>
+          </div>
+        </div>
+        <div className="profileNavBtnBorder">
+          <div className="profileNavBtnBody">
+            <button onClick={() => getUserThreads()}>My Threads</button>
+          </div>
+        </div>
+        <div className="profileNavBtnBorder">
+          <div className="profileNavBtnBody">
+            <button onClick={() => getFollowing()}>Following</button>
+          </div>
+        </div>
+        <div className="profileNavBtnBorder">
+          <div className="profileNavBtnBody">
+            <button onClick={() => getFollower()}>Followers</button>
+          </div>
+        </div>
       </div>
 
       <div className="allUsersPost" id="allUsersPost">

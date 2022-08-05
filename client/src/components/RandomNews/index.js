@@ -52,13 +52,21 @@ const RandomNews = () => {
   return (
     <div className="randomNewsPage">
       <div>
-        <h3>What's Happening</h3>
+        <h2>What's Happening</h2>
       </div>
       <div className="nextBackBtn">
         {currentPage + 1 === 1 ? (
-          <button disabled={true}>Back</button>
+          <div className="backBtnBorder">
+            <div className="backBtnBody">
+              <button disabled={true}>Back</button>
+            </div>
+          </div>
         ) : (
-          <button onClick={() => nextBack("back")}>Back</button>
+          <div className="backBtnBorder">
+            <div className="backBtnBody">
+              <button onClick={() => nextBack("back")}>Back</button>
+            </div>
+          </div>
         )}
 
         <p>
@@ -66,9 +74,17 @@ const RandomNews = () => {
         </p>
 
         {currentPage + 1 === maxPage ? (
-          <button disabled={true}>Next</button>
+          <div className="forwardBtnBorder">
+            <div className="forwardBtnBody">
+              <button disabled={true}>Next</button>
+            </div>
+          </div>
         ) : (
-          <button onClick={() => nextBack("next")}>Next</button>
+          <div className="forwardBtnBorder">
+            <div className="forwardBtnBody">
+              <button onClick={() => nextBack("next")}>Next</button>
+            </div>
+          </div>
         )}
       </div>
       <div className="randNewsAll">
