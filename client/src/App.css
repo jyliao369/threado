@@ -159,6 +159,7 @@
   );
 }
 .threadBorder {
+  width: 100%;
   background: black;
   padding: 10px;
   clip-path: polygon(3% 100%, 2% 5%, 99% 0%, 97% 90%);
@@ -445,10 +446,10 @@
 .createThreadForm {
   display: flex;
   flex-direction: column;
-  padding: 5%;
   border-bottom: solid;
   border-width: thin;
   border-color: lightgray;
+  align-items: center;
 }
 #createThreadForm {
   display: none;
@@ -469,6 +470,64 @@
   background: white;
   border-style: solid;
   border-width: thick;
+}
+.threadPostCont {
+  display: flex;
+  justify-content: center;
+}
+.threadPostNameBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(
+    10% 100%,
+    0% 66%,
+    0% 33%,
+    10% 0%,
+    90% 0%,
+    100% 35%,
+    100% 66%,
+    90% 100%
+  );
+  position: absolute;
+  z-index: 1;
+  margin: -0.5% 0% 0% 2%;
+}
+.threadPostNameBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px 8px 20px;
+  background: white;
+  clip-path: polygon(
+    10% 100%,
+    0% 66%,
+    0% 33%,
+    10% 0%,
+    90% 0%,
+    100% 35%,
+    100% 66%,
+    90% 100%
+  );
+}
+.threadPostNameBody input {
+  border: none;
+  outline: none;
+}
+.threadPostBorder {
+  width: 100%;
+  background: black;
+  padding: 10px;
+  clip-path: polygon(3% 100%, 2% 5%, 99% 0%, 97% 90%);
+}
+.threadPostBody {
+  background: white;
+  clip-path: polygon(3% 100%, 2% 5%, 99% 0%, 97% 90%);
+  padding: 35px 45px 25px 45px;
+}
+.threadPostBody textarea {
+  width: 100%;
+  border: none;
+  outline: none;
 }
 
 /* #SUBTHREADSPAGE */
@@ -717,8 +776,45 @@
   display: none;
 }
 .allUsersThread {
+  display: flex;
   flex-direction: column;
+  align-items: center;
 }
 #allUsersThread {
   display: none;
+}
+.notificationCont {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px 0px 0px;
+}
+.notificationBorder {
+  background: black;
+  padding: 6px;
+  clip-path: polygon(
+    25% 5%,
+    97% 2%,
+    95% 76%,
+    98% 100%,
+    75% 97%,
+    2% 97%,
+    5% 28%,
+    2% 0%
+  );
+}
+.notificationBody {
+  background: white;
+  clip-path: polygon(
+    25% 5%,
+    97% 2%,
+    95% 85%,
+    97% 100%,
+    74% 97%,
+    2% 97%,
+    5% 17%,
+    3% 0%
+  );
+}
+.notificationBody p {
+  padding: 10px 40px 10px 40px;
 }

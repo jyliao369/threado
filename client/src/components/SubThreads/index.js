@@ -66,7 +66,11 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
         <div className="searchCreateCont">
           <div className="searchCreate">
             <button>Search</button>
-            <button onClick={() => openCreateThread()}>+Create</button>
+            {isLoggedIn === false ? (
+              <></>
+            ) : (
+              <button onClick={() => openCreateThread()}>+Create</button>
+            )}
           </div>
         </div>
       </div>
@@ -75,18 +79,29 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
         <></>
       ) : (
         <div className="createThreadForm" id="createThreadForm">
-          <input
-            value={threadName}
-            onChange={(e) => setThreadName(e.target.value)}
-            placeholder="Thread Name"
-          />
-          <textarea
-            value={threadDesc}
-            onChange={(e) => setThreadDesc(e.target.value)}
-            placeholder="Thread Description"
-            rows={5}
-          />
-          <button onClick={createThread}>Create</button>
+          <div className="threadCont">
+            <div className="threadNameCont">
+              <div className="threadPostNameBorder">
+                <div className="threadPostNameBody">
+                  <input
+                    value={threadName}
+                    onChange={(e) => setThreadName(e.target.value)}
+                    placeholder="Thread Name"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="threadPostBorder">
+              <div className="threadPostBody">
+                <textarea
+                  value={threadDesc}
+                  onChange={(e) => setThreadDesc(e.target.value)}
+                  placeholder="Thread Description"
+                  rows={3}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       )}
 

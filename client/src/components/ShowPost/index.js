@@ -44,7 +44,7 @@ const ShowPost = () => {
                   </div>
                 </div>
               </div>
-              <Link to={`post/${post.postID}`}>
+              <Link to={`/post/${post.postID}`}>
                 <div className="generalPostBorder">
                   <div className="generalPostBody">
                     <p>{post.postBody}</p>

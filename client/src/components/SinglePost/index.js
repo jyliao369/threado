@@ -39,6 +39,15 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
       console.log(response);
       setCommentBody("");
       document.getElementById("commentForm").style.display = "none";
+
+      Axios.get(
+        `https://threado-server.herokuapp.com/getPostComment/${postID}`,
+        {}
+      ).then((response) => {
+        // console.log("hello there");
+        // console.log(response.data);
+        setAllPostComment(response.data.reverse());
+      });
     });
   };
 
@@ -58,7 +67,7 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
       {}
     ).then((response) => {
       // console.log(response.data);
-      setAllPostComment(response.data);
+      setAllPostComment(response.data.reverse());
     });
   }, []);
 
@@ -150,23 +159,35 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
       </div>
 
       <div>
-        {allPostComment.map((comment) => (
-          <div key={comment.commentID} className="commentCont">
-            <div className="postProfileIconCont">
-              <div className="postProfileIconBorder">
-                <div className="postProfileIconBody"></div>
-              </div>
-              <div className="postUsername">
-                <p>{comment.username}</p>
-              </div>
-            </div>
-            <div className="commentBorder">
-              <div className="commentBody">
-                <p>{comment.commentBody}</p>
+        {allPostComment.length <= 0 ? (
+          <div className="notificationCont">
+            <div className="notificationBorder">
+              <div className="notificationBody">
+                <p>There are no comments. Share your thoughts!!</p>
               </div>
             </div>
           </div>
-        ))}
+        ) : (
+          <>
+            {allPostComment.map((comment) => (
+              <div key={comment.commentID} className="commentCont">
+                <div className="postProfileIconCont">
+                  <div className="postProfileIconBorder">
+                    <div className="postProfileIconBody"></div>
+                  </div>
+                  <div className="postUsername">
+                    <p>{comment.username}</p>
+                  </div>
+                </div>
+                <div className="commentBorder">
+                  <div className="commentBody">
+                    <p>{comment.commentBody}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
