@@ -225,7 +225,7 @@
 
 /* #RANDOMNEWS */
 .randNewsCont {
-  padding: 25px 20px 5px 20px;
+  padding: 25px 20px 15px 20px;
 }
 .randTitleCont {
   display: flex;
@@ -433,8 +433,8 @@
 }
 .searchCreateBtn {
   display: flex;
-  flex-direction: row;
-  padding: 2%;
+  flex-direction: column;
+  padding: 20px 35px 25px 25px;
   border-bottom: solid;
   border-width: thin;
   border-color: lightgray;
@@ -452,6 +452,23 @@
 }
 #createThreadForm {
   display: none;
+}
+.searchCreateCont {
+  display: flex;
+  justify-content: flex-end;
+}
+.searchCreate {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin: -25px 50px 0px 0px;
+}
+.searchCreate button {
+  padding: 5px 10px 5px 10px;
+  margin: 0px 0px 0px 20px;
+  background: white;
+  border-style: solid;
+  border-width: thick;
 }
 
 /* #SUBTHREADSPAGE */
@@ -614,12 +631,94 @@
 /* #EXPLOREPAGE */
 .searchInput {
   display: flex;
-  flex-direction: row;
-  padding: 2%;
+  flex-direction: column;
+  padding: 20px 35px 25px 20px;
   border-bottom: solid;
   border-width: thin;
   border-color: lightgray;
 }
-.searchInput input {
+.searchInputBorder {
   width: 100%;
+  background: black;
+  padding: 8px;
+  clip-path: polygon(0% 8%, 97% 1%, 100% 95%, 3% 99%);
+}
+.searchInputBody {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: white;
+  clip-path: polygon(0% 5%, 97% 5%, 100% 95%, 3% 89%);
+  padding: 25px 40px 30px 35px;
+}
+.searchInputBody input {
+  border: none;
+  outline: none;
+}
+.searchBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.searchBtn button {
+  position: absolute;
+  margin: -25px 50px 0px 0px;
+  background: white;
+  padding: 5px 10px 5px 10px;
+  border-style: solid;
+  border-width: thick;
+}
+
+/* #PROFILE */
+.accountBanner {
+  border-bottom: solid;
+  border-width: thin;
+  border-color: lightgray;
+  padding: 0px 0px 40px 0px;
+}
+.banner {
+  height: 200px;
+  background-color: lightgray;
+}
+.account {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin: -75px 0px 0px 40px;
+}
+.accountIcon {
+  width: 150px;
+  height: 150px;
+  border-radius: 90px;
+  background-color: lightgray;
+  border-style: solid;
+  border-width: 10px;
+  border-color: white;
+}
+.profileNav {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: lightgray;
+  padding: 15px 0px 15px 0px;
+}
+.allUsersPost {
+  flex-direction: column;
+}
+#allUsersPost {
+  display: flex;
+}
+.allUsersComment {
+  flex-direction: column;
+}
+#allUsersComment {
+  display: none;
+}
+.allUsersThread {
+  flex-direction: column;
+}
+#allUsersThread {
+  display: none;
 }

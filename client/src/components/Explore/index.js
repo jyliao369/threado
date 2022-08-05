@@ -24,8 +24,15 @@ const Explore = () => {
       </div>
 
       <div className="searchInput">
-        <input placeholder="Search..." />
-        <button>Search</button>
+        <div className="searchInputBorder">
+          <div className="searchInputBody">
+            <input placeholder="Search..." />
+          </div>
+        </div>
+
+        <div className="searchBtn">
+          <button>Search</button>
+        </div>
       </div>
 
       <div>

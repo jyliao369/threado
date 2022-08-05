@@ -57,9 +57,18 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
       </div>
 
       <div className="searchCreateBtn">
-        <input placeholder="Search..." />
-        <button>Search</button>
-        <button onClick={() => openCreateThread()}>+Create</button>
+        <div className="searchInputBorder">
+          <div className="searchInputBody">
+            <input placeholder="Search..." />
+          </div>
+        </div>
+
+        <div className="searchCreateCont">
+          <div className="searchCreate">
+            <button>Search</button>
+            <button onClick={() => openCreateThread()}>+Create</button>
+          </div>
+        </div>
       </div>
 
       {isLoggedIn === false ? (

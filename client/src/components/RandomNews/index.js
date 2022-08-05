@@ -10,7 +10,7 @@ const RandomNews = () => {
   const [maxPage, setMaxPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const newsLimit = 5;
+  const newsLimit = 10;
 
   const nextBack = (nextBack) => {
     if (nextBack === "next") {
