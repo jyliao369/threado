@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/threado/static/css/main.d40b7fc1.css",
+    "main.js": "/threado/static/js/main.1034b69a.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/threado/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/threado/index.html",
+    "main.d40b7fc1.css.map": "/threado/static/css/main.d40b7fc1.css.map",
+    "main.1034b69a.js.map": "/threado/static/js/main.1034b69a.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/threado/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d40b7fc1.css",
+    "static/js/main.1034b69a.js"
+  ]
+}
