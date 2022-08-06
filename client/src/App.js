@@ -103,7 +103,7 @@ function App() {
               path="/settings"
               element={
                 <>
-                  <Settings />
+                  <Settings currentUser={currentUser} />
                 </>
               }
             />

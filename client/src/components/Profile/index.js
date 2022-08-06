@@ -242,11 +242,9 @@ const Profile = ({ currentUser }) => {
                   <div className="threadInfo">
                     <div>
                       <GroupsOutlinedIcon />
-                      <p>users</p>
                     </div>
                     <div>
                       <CalendarMonthOutlinedIcon />
-                      <p> *date</p>
                     </div>
                   </div>
                 </div>
