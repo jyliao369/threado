@@ -42,6 +42,7 @@ function App() {
         <NavBar
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}
+          currentUser={currentUser}
           setCurrentUser={setCurrentUser}
         />
 
@@ -83,10 +84,18 @@ function App() {
               }
             />
             <Route
-              path="/bookmark"
+              path="/bookmark/:userID"
               element={
                 <>
-                  <Bookmark />
+                  <Bookmark currentUser={currentUser} />
+                </>
+              }
+            />
+            <Route
+              path="/mythreads/:userID"
+              element={
+                <>
+                  <MyThreads />
                 </>
               }
             />
@@ -140,14 +149,6 @@ function App() {
                     isLoggedIn={isLoggedIn}
                     currentUser={currentUser}
                   />
-                </>
-              }
-            />
-            <Route
-              path="/mythreads/:userID"
-              element={
-                <>
-                  <MyThreads />
                 </>
               }
             />

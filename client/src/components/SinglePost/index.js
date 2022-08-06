@@ -5,6 +5,8 @@ import Axios from "axios";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import BookmarkBorderOutlined from "@mui/icons-material/BookmarkBorderOutlined";
 
 const SinglePost = ({ isLoggedIn, currentUser }) => {
   const { postID } = useParams();
@@ -12,6 +14,7 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
   const [postOP, setPostOP] = useState(" ");
   const [postTitle, setPostTitle] = useState(" ");
   const [postBody, setPostBody] = useState(" ");
+  const [postSubthreadID, setPostSubthreadId] = useState(" ");
 
   const [commentBody, setCommentBody] = useState("");
 
@@ -51,6 +54,19 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
     });
   };
 
+  const bookmarkPost = () => {
+    Axios.post(`http://localhost:3001/addBookmark`, {
+      postID: postID,
+      userID: currentUser.userID,
+      username: currentUser.username,
+      postTitle: postTitle,
+      postBody: postBody,
+      subthreadID: postSubthreadID,
+    }).then((response) => {
+      console.log(response);
+    });
+  };
+
   useEffect(() => {
     Axios.get(`https://threado-server.herokuapp.com/post/${postID}`, {}).then(
       (response) => {
@@ -59,6 +75,7 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
         setPostOP(response.data[0].username);
         setPostTitle(response.data[0].postTitle);
         setPostBody(response.data[0].postBody);
+        setPostSubthreadId(response.data[0].subthreadID);
       }
     );
 
@@ -93,16 +110,6 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
               </div>
             </div>
 
-            {isLoggedIn === false ? (
-              <></>
-            ) : (
-              <div className="commentFormBtnCont">
-                <div className="commentFormBtn">
-                  <button onClick={() => openCommentForm()}>Add Comment</button>
-                </div>
-              </div>
-            )}
-
             <div className="generalPostBorder">
               <div className="generalPostBody">
                 <p>{postBody}</p>
@@ -117,17 +124,15 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
               </div>
             </div>
             <div className="likeCom">
-              <div>
+              <button>
                 <FavoriteBorderOutlinedIcon />
-                <p>likes</p>
-              </div>
-              <div>
+              </button>
+              <button onClick={() => openCommentForm()}>
                 <ChatBubbleOutlineOutlinedIcon />
-                <p>comments</p>
-              </div>
-              <div>
-                <p>bookmark</p>
-              </div>
+              </button>
+              <button onClick={() => bookmarkPost()}>
+                <BookmarkBorderOutlined />
+              </button>
             </div>
           </div>
         </div>
@@ -182,9 +187,18 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
                     <p>{comment.username}</p>
                   </div>
                 </div>
-                <div className="commentBorder">
-                  <div className="commentBody">
-                    <p>{comment.commentBody}</p>
+                <div className="commentMainCont">
+                  <div className="commentBorder">
+                    <div className="commentBody">
+                      <p>{comment.commentBody}</p>
+                    </div>
+                  </div>
+                  <div className="commentDateCont">
+                    <div className="commentDateBorder">
+                      <div className="commentDateBody">
+                        <p>Posted on: *date</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

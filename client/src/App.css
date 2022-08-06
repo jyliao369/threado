@@ -56,7 +56,7 @@
   clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
   position: absolute;
   z-index: 1;
-  margin: -1% 0% 0% 1.5%;
+  margin: -1% 0% 0% 2.5%;
 }
 .generalPostTitleBody {
   background: white;
@@ -100,7 +100,7 @@
   position: absolute;
   margin: -1.25% 0% 0% 2%;
 }
-.likeCom div {
+.likeCom button {
   display: flex;
   align-items: center;
   border-style: solid;
@@ -210,8 +210,12 @@
   justify-content: space-around;
   padding: 20px 10px 20px 10px;
 }
-.commentBorder {
+.commentMainCont {
+  display: flex;
+  flex-direction: column;
   width: 80%;
+}
+.commentBorder {
   background: black;
   padding: 10px;
   clip-path: polygon(8% 1%, 0% 20%, 5% 97%, 92% 95%, 98% 76%, 95% 4%);
@@ -221,7 +225,25 @@
   clip-path: polygon(8% 1%, 0% 20%, 5% 97%, 92% 95%, 98% 76%, 95% 4%);
 }
 .commentBody p {
-  padding: 20px 80px 20px 80px;
+  padding: 20px 80px 25px 80px;
+}
+.commentDateCont {
+  display: flex;
+  justify-content: flex-end;
+}
+.commentDateBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+  position: absolute;
+  margin: -25px 120px 0px 0px;
+}
+.commentDateBody {
+  background: white;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+}
+.commentDateBody p {
+  padding: 5px 15px 5px 15px;
 }
 
 /* #RANDOMNEWS */
@@ -258,7 +280,25 @@
   border-radius: 35px;
 }
 .randNewBody p {
-  padding: 25px 30px 15px 30px;
+  padding: 30px 30px 25px 35px;
+}
+.randNewUserCont {
+  display: flex;
+  justify-content: flex-end;
+}
+.randNewUserBorder {
+  background: black;
+  padding: 5px;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+  position: absolute;
+  margin: -21px 30px 0px 0px;
+}
+.randNewUserBody {
+  background: white;
+  clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
+}
+.randNewUserBody p {
+  padding: 5px 20px 5px 20px;
 }
 
 /* --------------------------------------------------------------------------------------------- */
@@ -585,12 +625,26 @@
 .threadPostBody {
   background: white;
   clip-path: polygon(3% 100%, 2% 5%, 99% 0%, 97% 90%);
-  padding: 35px 45px 25px 45px;
+  padding: 35px 45px 30px 45px;
 }
 .threadPostBody textarea {
   width: 100%;
   border: none;
   outline: none;
+}
+.createThreadBtnCont {
+  display: flex;
+  justify-content: flex-end;
+}
+.createThreadBtn {
+  position: absolute;
+  margin: -35px 80px 0px 0px;
+}
+.createThreadBtn button {
+  padding: 5px 10px 5px 10px;
+  border-style: solid;
+  border-width: thick;
+  background: white;
 }
 
 /* #SUBTHREADSPAGE */
@@ -612,6 +666,7 @@
 }
 .addPostBtn button {
   padding: 7px;
+  margin: 0px 0px 0px 10px;
   background: white;
   border-style: solid;
   border-width: thick;
@@ -702,6 +757,7 @@
   background: white;
   border-style: solid;
   border-width: thick;
+  margin: 0px 0px 0px 10px;
 }
 .commentForm {
   display: flex;

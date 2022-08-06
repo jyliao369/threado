@@ -24,9 +24,10 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
       Axios.get(`https://threado-server.herokuapp.com/allThreads`, {}).then(
         (response) => {
           console.log(response);
-          setThreadList(response.data);
+          setThreadList(response.data.reverse());
           setThreadName("");
           setThreadDesc("");
+          document.getElementById("createThreadForm").style.display = "none";
         }
       );
     });
@@ -44,7 +45,7 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
     Axios.get(`https://threado-server.herokuapp.com/allThreads`, {}).then(
       (response) => {
         // console.log(response.data);
-        setThreadList(response.data);
+        setThreadList(response.data.reverse());
       }
     );
   }, []);
@@ -91,14 +92,21 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
                 </div>
               </div>
             </div>
-            <div className="threadPostBorder">
-              <div className="threadPostBody">
-                <textarea
-                  value={threadDesc}
-                  onChange={(e) => setThreadDesc(e.target.value)}
-                  placeholder="Thread Description"
-                  rows={3}
-                />
+            <div className="threadMainCont">
+              <div className="threadPostBorder">
+                <div className="threadPostBody">
+                  <textarea
+                    value={threadDesc}
+                    onChange={(e) => setThreadDesc(e.target.value)}
+                    placeholder="Thread Description"
+                    rows={3}
+                  />
+                </div>
+              </div>
+              <div className="createThreadBtnCont">
+                <div className="createThreadBtn">
+                  <button onClick={() => createThread()}>Create</button>
+                </div>
               </div>
             </div>
           </div>

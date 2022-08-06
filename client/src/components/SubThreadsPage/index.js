@@ -89,6 +89,7 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
             <div className="addPostBtnCont">
               <div className="addPostBtn">
                 <button onClick={() => openPostForm()}>Add Post</button>
+                <button>Join</button>
               </div>
             </div>
           )}

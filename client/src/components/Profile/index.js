@@ -41,7 +41,7 @@ const Profile = ({ currentUser }) => {
 
   useEffect(() => {
     Axios.get(
-      `http://localhost:3001/getMyPosts/${currentUser.userID}`,
+      `https://threado-server.herokuapp.com/getMyPosts/${currentUser.userID}`,
       {}
     ).then((response) => {
       // console.log(response.data);
@@ -49,7 +49,7 @@ const Profile = ({ currentUser }) => {
     });
 
     Axios.get(
-      `http://localhost:3001/getUserCom/${currentUser.userID}`,
+      `https://threado-server.herokuapp.com/getUserCom/${currentUser.userID}`,
       {}
     ).then((response) => {
       // console.log(response.data);
@@ -57,7 +57,7 @@ const Profile = ({ currentUser }) => {
     });
 
     Axios.get(
-      `http://localhost:3001/getUserThreads/${currentUser.userID}`,
+      `https://threado-server.herokuapp.com/getUserThreads/${currentUser.userID}`,
       {}
     ).then((response) => {
       // console.log(response.data);
@@ -193,9 +193,18 @@ const Profile = ({ currentUser }) => {
                     <p>{comment.username}</p>
                   </div>
                 </div>
-                <div className="commentBorder">
-                  <div className="commentBody">
-                    <p>{comment.commentBody}</p>
+                <div className="commentMainCont">
+                  <div className="commentBorder">
+                    <div className="commentBody">
+                      <p>{comment.commentBody}</p>
+                    </div>
+                  </div>
+                  <div className="commentDateCont">
+                    <div className="commentDateBorder">
+                      <div className="commentDateBody">
+                        <p>Posted on: *date</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -59,14 +59,12 @@ const ShowPost = () => {
                 </div>
               </div>
               <div className="likeCom">
-                <div>
+                <button>
                   <FavoriteBorderOutlinedIcon />
-                  <p>likes</p>
-                </div>
-                <div>
+                </button>
+                <button>
                   <ChatBubbleOutlineOutlinedIcon />
-                  <p>comments</p>
-                </div>
+                </button>
               </div>
             </div>
           </div>

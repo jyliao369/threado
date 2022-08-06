@@ -12,7 +12,7 @@ import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlin
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 
-const NavBar = ({ isLoggedIn, setIsLoggedIn, setCurrentUser }) => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
   const logoutUser = () => {
     Axios.get(`https://threado-server.herokuapp.com/logout`, {}).then(() => {
       // console.log(response);
@@ -57,13 +57,13 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setCurrentUser }) => {
                 <p>Profile</p>
               </div>
             </Link>
-            <Link to="/bookmark">
+            <Link to={`/bookmark/${currentUser.userID}`}>
               <div>
                 <BookmarkBorderOutlinedIcon />
                 <p>Bookmark</p>
               </div>
             </Link>
-            <Link to="/mythreads/:userID">
+            <Link to={`/mythreads/${currentUser.userID}`}>
               <div>
                 <ListAltOutlinedIcon />
                 <p>My Threads</p>

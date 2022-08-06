@@ -15,9 +15,6 @@ const RandomNews = () => {
   const nextBack = (nextBack) => {
     if (nextBack === "next") {
       setCurrentPage(currentPage + 1);
-      // console.log(
-      //   allPosts.slice(0 + 10 * (currentPage + 1), 10 + 10 * (currentPage + 1))
-      // );
       setCurrentNews(
         allPosts.slice(
           0 + newsLimit * (currentPage + 1),
@@ -26,9 +23,6 @@ const RandomNews = () => {
       );
     } else {
       setCurrentPage(currentPage - 1);
-      // console.log(
-      //   allPosts.slice(0 + 10 * (currentPage - 1), 10 + 10 * (currentPage - 1))
-      // );
       setCurrentNews(
         allPosts.slice(
           0 + newsLimit * (currentPage - 1),
@@ -41,7 +35,7 @@ const RandomNews = () => {
   useEffect(() => {
     Axios.get("https://threado-server.herokuapp.com/", {}).then((response) => {
       // console.log(Math.ceil(response.data.length / 10));
-      console.log(response.data.reverse());
+      // console.log(response.data.reverse());
 
       setMaxPage(Math.ceil(response.data.length / newsLimit));
       setAllPosts(response.data.reverse());
@@ -87,6 +81,7 @@ const RandomNews = () => {
           </div>
         )}
       </div>
+
       <div className="randNewsAll">
         {currentNews.map((post) => (
           <div key={post.postID} className="randNewsCont">
@@ -105,6 +100,14 @@ const RandomNews = () => {
                 </div>
               </div>
             </Link>
+
+            <div className="randNewUserCont">
+              <div className="randNewUserBorder">
+                <div className="randNewUserBody">
+                  <p>Posted by: {post.username}</p>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
