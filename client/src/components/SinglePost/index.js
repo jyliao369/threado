@@ -125,6 +125,9 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
                 <ChatBubbleOutlineOutlinedIcon />
                 <p>comments</p>
               </div>
+              <div>
+                <p>bookmark</p>
+              </div>
             </div>
           </div>
         </div>
