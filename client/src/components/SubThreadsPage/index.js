@@ -8,6 +8,8 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import AddCommentOutlinedIcon from "@mui/icons-material/AddCommentOutlined";
+import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 
 const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
   const { subthreadID } = useParams();
@@ -49,6 +51,23 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
     }
   };
 
+  const joinThread = () => {
+    console.log("hello there joining thread");
+    console.log(currentUser.userID);
+    console.log(subthreadID);
+    console.log(curThreadName);
+    console.log(curThreadDesc);
+
+    Axios.post(`http://localhost:3001/joinThread`, {
+      userID: currentUser.userID,
+      subthreadID: subthreadID,
+      threadName: curThreadName,
+      threadDesc: curThreadDesc,
+    }).then((response) => {
+      console.log(response);
+    });
+  };
+
   useEffect(() => {
     Axios.get(
       `https://threado-server.herokuapp.com/getSubthread/${subthreadID}`,
@@ -88,8 +107,12 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
           ) : (
             <div className="addPostBtnCont">
               <div className="addPostBtn">
-                <button onClick={() => openPostForm()}>Add Post</button>
-                <button>Join</button>
+                <button onClick={() => openPostForm()}>
+                  <AddCommentOutlinedIcon />
+                </button>
+                <button onClick={() => joinThread()}>
+                  <GroupAddOutlinedIcon />
+                </button>
               </div>
             </div>
           )}
@@ -193,22 +216,15 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
                 </div>
               </div>
               <div className="likeCom">
-                <div>
+                <button>
                   <FavoriteBorderOutlinedIcon />
-                  <p>likes</p>
-                </div>
-                <div>
+                </button>
+                <button>
                   <ChatBubbleOutlineOutlinedIcon />
-                  <p>comments</p>
-                </div>
+                </button>
               </div>
             </div>
           </div>
-          // <div key={post.postID}>
-          //   <p>{post.postTitle}</p>
-          //   <p>{post.postBody}</p>
-          //   <br />
-          // </div>
         ))}
       </div>
     </div>

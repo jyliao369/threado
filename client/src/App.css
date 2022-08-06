@@ -657,14 +657,17 @@
 }
 .addPostBtnCont {
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
 }
 .addPostBtn {
+  display: flex;
   position: absolute;
   margin: -0.65% 2.5% 0px 0px;
   z-index: 1;
 }
 .addPostBtn button {
+  display: flex;
   padding: 7px;
   margin: 0px 0px 0px 10px;
   background: white;
@@ -951,4 +954,11 @@
 }
 .notificationBody p {
   padding: 10px 40px 10px 40px;
+}
+
+/* #MYTHREADSPAGE */
+.userThreadCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
