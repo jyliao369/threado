@@ -963,6 +963,11 @@
   align-items: center;
 }
 
+/* #USERBOOKMARKS */
+.notificationCont {
+  display: flex;
+}
+
 /* #SETTINGS */
 .updateFormBorder {
   background: black;

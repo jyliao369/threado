@@ -29,35 +29,47 @@ const MyThreads = () => {
       </div>
 
       <div className="userThreadCont">
-        {userThreads.map((thread) => (
-          // <div>{thread.threadName}</div>
-          <div key={thread.subthreadID} className="threadCont">
-            <div className="threadNameCont">
-              <div className="threadNameBorder">
-                <div className="threadNameBody">
-                  <h3>/{thread.threadName}</h3>
-                </div>
-              </div>
-            </div>
-            <div className="threadBorder">
-              <div className="threadBody">
-                <Link to={`/subthread/${thread.subthreadID}`}>
-                  <p>{thread.threadDesc}</p>
-                </Link>
-              </div>
-            </div>
-            <div className="threadInfoCont">
-              <div className="threadInfo">
-                <div>
-                  <GroupsOutlinedIcon />
-                </div>
-                <div>
-                  <CalendarMonthOutlinedIcon />
-                </div>
+        {userThreads.length <= 0 ? (
+          <div className="notificationCont">
+            <div className="notificationBorder">
+              <div className="notificationBody">
+                <p>There no threads you have joined!!</p>
               </div>
             </div>
           </div>
-        ))}
+        ) : (
+          <>
+            {userThreads.map((thread) => (
+              // <div>{thread.threadName}</div>
+              <div key={thread.subthreadID} className="threadCont">
+                <div className="threadNameCont">
+                  <div className="threadNameBorder">
+                    <div className="threadNameBody">
+                      <h3>/{thread.threadName}</h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="threadBorder">
+                  <div className="threadBody">
+                    <Link to={`/subthread/${thread.subthreadID}`}>
+                      <p>{thread.threadDesc}</p>
+                    </Link>
+                  </div>
+                </div>
+                <div className="threadInfoCont">
+                  <div className="threadInfo">
+                    <div>
+                      <GroupsOutlinedIcon />
+                    </div>
+                    <div>
+                      <CalendarMonthOutlinedIcon />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
