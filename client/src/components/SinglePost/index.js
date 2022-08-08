@@ -14,13 +14,12 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
   const [postTitle, setPostTitle] = useState(" ");
   const [postBody, setPostBody] = useState(" ");
   const [postSubthreadID, setPostSubthreadId] = useState(" ");
+  const [postTotalLike, setPostTitleLike] = useState(0);
+  const [postTotalComments, setPostTotalComments] = useState(0);
 
   const [commentBody, setCommentBody] = useState("");
 
   const [allPostComment, setAllPostComment] = useState([]);
-
-  const [numLikes, setNumLikes] = useState("");
-  const [numComments, setNumComments] = useState("");
 
   const openCommentForm = () => {
     if (document.getElementById("commentForm").style.display !== "flex") {
@@ -76,40 +75,17 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
     });
   };
 
-  const likeCount = () => {
-    Axios.get(`http://localhost:3001/getLikes/${postID}`, {}).then(
-      (response) => {
-        // console.log(res.data.length);
-        setNumLikes(response.data.length);
-      }
-    );
-    // console.log("hello");
-    // console.log(numLikes);
-    return numLikes;
-  };
-
-  const commentCont = () => {
-    Axios.get(
-      `https://threado-server.herokuapp.com/getPostComment/${postID}`,
-      {}
-    ).then((response) => {
-      // console.log(response.data);
-      setNumComments(response.data.length);
-    });
-    return numComments;
-  };
-
   useEffect(() => {
-    Axios.get(`https://threado-server.herokuapp.com/post/${postID}`, {}).then(
-      (response) => {
-        // console.log(response.data[0]);
-
-        setPostOP(response.data[0].username);
-        setPostTitle(response.data[0].postTitle);
-        setPostBody(response.data[0].postBody);
-        setPostSubthreadId(response.data[0].subthreadID);
-      }
-    );
+    Axios.get(`http://localhost:3001/post/${postID}`, {}).then((response) => {
+      console.log("hello");
+      console.log(response.data);
+      setPostOP(response.data[0].username);
+      setPostTitle(response.data[0].postTitle);
+      setPostBody(response.data[0].postBody);
+      setPostSubthreadId(response.data[0].subthreadID);
+      setPostTitleLike(response.data[0].likeTotal);
+      setPostTotalComments(response.data[0].commentTotal);
+    });
 
     Axios.get(
       `https://threado-server.herokuapp.com/getPostComment/${postID}`,
@@ -155,19 +131,44 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
                 </div>
               </div>
             </div>
-            <div className="likeCom">
-              <button onClick={() => likePost()}>
-                <FavoriteBorderOutlinedIcon />
-                {likeCount()}
-              </button>
-              <button onClick={() => openCommentForm()}>
-                <ChatBubbleOutlineOutlinedIcon />
-                {commentCont()}
-              </button>
-              <button onClick={() => bookmarkPost()}>
-                <BookmarkBorderOutlined />
-              </button>
-            </div>
+            {isLoggedIn === false ? (
+              <div className="likeCom">
+                <button>
+                  <FavoriteBorderOutlinedIcon />
+                  {postTotalLike}
+                </button>
+                <button>
+                  <ChatBubbleOutlineOutlinedIcon />
+                  {postTotalComments}
+                </button>
+                <button>
+                  <BookmarkBorderOutlined />
+                </button>
+              </div>
+            ) : (
+              <div className="likeCom">
+                <button
+                  style={{ cursor: "pointer" }}
+                  onClick={() => likePost()}
+                >
+                  <FavoriteBorderOutlinedIcon />
+                  {postTotalLike}
+                </button>
+                <button
+                  style={{ cursor: "pointer" }}
+                  onClick={() => openCommentForm()}
+                >
+                  <ChatBubbleOutlineOutlinedIcon />
+                  {postTotalComments}
+                </button>
+                <button
+                  style={{ cursor: "pointer" }}
+                  onClick={() => bookmarkPost()}
+                >
+                  <BookmarkBorderOutlined />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

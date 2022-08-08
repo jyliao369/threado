@@ -13,7 +13,7 @@
 .postCont {
   display: flex;
   align-items: center;
-  padding: 30px 3% 20px 3%;
+  padding: 35px 3% 30px 3%;
 }
 .postProfileIconBorder {
   display: flex;
@@ -75,7 +75,7 @@
   clip-path: polygon(5% 5%, 99% 0%, 95% 98%, 0% 95%);
 }
 .generalPostBody p {
-  padding: 3.6% 6.2% 3.6% 6.2%;
+  padding: 40px 6.2% 40px 7%;
 }
 .generalPostDateTimeCont {
   display: flex;
@@ -86,7 +86,7 @@
   padding: 5px;
   clip-path: polygon(5% 5%, 94% 3%, 98% 25%, 94% 90%, 5% 97%, 1% 60%);
   position: absolute;
-  margin: -1.5% 2.5% 0% 0%;
+  margin: -27px 2.5% 0% 0%;
 }
 .generalPostDateTimeBody {
   background: white;
@@ -98,15 +98,15 @@
 .likeCom {
   display: flex;
   position: absolute;
-  margin: -1.25% 0% 0% 2%;
+  margin: -27px 0% 0% 2%;
 }
 .likeCom button {
   display: flex;
   align-items: center;
   border-style: solid;
-  border-width: medium;
+  border-width: thick;
   border-color: black;
-  padding: 3%;
+  padding: 4%;
   background: white;
   margin: 0px 10px 0px 0px;
 }

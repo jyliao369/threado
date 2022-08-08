@@ -12,10 +12,17 @@ const ShowPost = () => {
 
   useEffect(() => {
     Axios.get("https://threado-server.herokuapp.com/", {}).then((response) => {
-      // console.log(response.data.reverse());
+      console.log(response.data.reverse());
       setAllPosts(response.data.reverse());
     });
   }, []);
+
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3001/", {}).then((response) => {
+  //     console.log(response.data.reverse());
+  //     setAllPosts(response.data.reverse());
+  //   });
+  // }, []);
 
   return (
     <div className="showPost">
@@ -61,9 +68,11 @@ const ShowPost = () => {
               <div className="likeCom">
                 <button>
                   <FavoriteBorderOutlinedIcon />
+                  {post.likeTotal}
                 </button>
                 <button>
                   <ChatBubbleOutlineOutlinedIcon />
+                  {post.commentTotal}
                 </button>
               </div>
             </div>
