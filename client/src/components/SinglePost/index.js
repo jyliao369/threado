@@ -5,7 +5,6 @@ import Axios from "axios";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkBorderOutlined from "@mui/icons-material/BookmarkBorderOutlined";
 
 const SinglePost = ({ isLoggedIn, currentUser }) => {
@@ -20,6 +19,9 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
 
   const [allPostComment, setAllPostComment] = useState([]);
 
+  const [numLikes, setNumLikes] = useState("");
+  const [numComments, setNumComments] = useState("");
+
   const openCommentForm = () => {
     if (document.getElementById("commentForm").style.display !== "flex") {
       document.getElementById("commentForm").style.display = "flex";
@@ -29,10 +31,6 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
   };
 
   const postComment = () => {
-    // console.log(currentUser.username);
-    // console.log(currentUser.userID);
-    // console.log(commentBody);
-
     Axios.post(`https://threado-server.herokuapp.com/addComment`, {
       postID: postID,
       userID: currentUser.userID,
@@ -47,7 +45,6 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
         `https://threado-server.herokuapp.com/getPostComment/${postID}`,
         {}
       ).then((response) => {
-        // console.log("hello there");
         // console.log(response.data);
         setAllPostComment(response.data.reverse());
       });
@@ -65,6 +62,41 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
     }).then((response) => {
       console.log(response);
     });
+  };
+
+  const likePost = () => {
+    Axios.post(`http://localhost:3001/likePost/${postID}`, {
+      userID: currentUser.userID,
+      username: currentUser.username,
+      lastName: currentUser.lastName,
+      firstName: currentUser.firstName,
+      email: currentUser.email,
+    }).then((response) => {
+      console.log(response);
+    });
+  };
+
+  const likeCount = () => {
+    Axios.get(`http://localhost:3001/getLikes/${postID}`, {}).then(
+      (response) => {
+        // console.log(res.data.length);
+        setNumLikes(response.data.length);
+      }
+    );
+    // console.log("hello");
+    // console.log(numLikes);
+    return numLikes;
+  };
+
+  const commentCont = () => {
+    Axios.get(
+      `https://threado-server.herokuapp.com/getPostComment/${postID}`,
+      {}
+    ).then((response) => {
+      // console.log(response.data);
+      setNumComments(response.data.length);
+    });
+    return numComments;
   };
 
   useEffect(() => {
@@ -124,11 +156,13 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
               </div>
             </div>
             <div className="likeCom">
-              <button>
+              <button onClick={() => likePost()}>
                 <FavoriteBorderOutlinedIcon />
+                {likeCount()}
               </button>
               <button onClick={() => openCommentForm()}>
                 <ChatBubbleOutlineOutlinedIcon />
+                {commentCont()}
               </button>
               <button onClick={() => bookmarkPost()}>
                 <BookmarkBorderOutlined />
