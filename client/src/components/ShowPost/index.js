@@ -17,13 +17,6 @@ const ShowPost = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   Axios.get("http://localhost:3001/", {}).then((response) => {
-  //     console.log(response.data.reverse());
-  //     setAllPosts(response.data.reverse());
-  //   });
-  // }, []);
-
   return (
     <div className="showPost">
       <div className="pageBanner">

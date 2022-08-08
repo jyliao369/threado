@@ -13,12 +13,13 @@ const MyThreads = () => {
   const [userThreads, setuserThreads] = useState([]);
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/getUserThreads/${userID}`, {}).then(
-      (response) => {
-        console.log(response.data.reverse());
-        setuserThreads(response.data.reverse());
-      }
-    );
+    Axios.get(
+      `https://threado-server.herokuapp.com/getUserThreads/${userID}`,
+      {}
+    ).then((response) => {
+      // console.log(response.data.reverse());
+      setuserThreads(response.data.reverse());
+    });
   }, []);
 
   return (

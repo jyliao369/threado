@@ -52,13 +52,7 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
   };
 
   const joinThread = () => {
-    console.log("hello there joining thread");
-    console.log(currentUser.userID);
-    console.log(subthreadID);
-    console.log(curThreadName);
-    console.log(curThreadDesc);
-
-    Axios.post(`http://localhost:3001/joinThread`, {
+    Axios.post(`https://threado-server.herokuapp.com/joinThread`, {
       userID: currentUser.userID,
       subthreadID: subthreadID,
       threadName: curThreadName,

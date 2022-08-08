@@ -13,9 +13,12 @@ const Bookmark = () => {
   const [userBookmark, setUserBookmark] = useState([]);
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/allUserBookmark/${userID}`, {
-      userID: userID,
-    }).then((response) => {
+    Axios.get(
+      `https://threado-server.herokuapp.com/allUserBookmark/${userID}`,
+      {
+        userID: userID,
+      }
+    ).then((response) => {
       // console.log(response.data);
       setUserBookmark(response.data.reverse());
     });

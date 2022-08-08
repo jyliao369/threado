@@ -18,9 +18,12 @@ const Settings = ({ currentUser }) => {
       console.log("Passwords dont match");
     } else {
       // console.log("Passwords match");
-      Axios.put(`http://localhost:3001/updatePass/${currentUser.userID}`, {
-        newPass: newPass,
-      }).then((response) => {
+      Axios.put(
+        `https://threado-server.herokuapp.com/updatePass/${currentUser.userID}`,
+        {
+          newPass: newPass,
+        }
+      ).then((response) => {
         console.log(response);
       });
     }
@@ -39,12 +42,15 @@ const Settings = ({ currentUser }) => {
       console.log(lastUpdate);
       console.log(firstUpdate);
       console.log(emailUpdate);
-      Axios.put(`http://localhost:3001/updateProfile/${currentUser.userID}`, {
-        usernameUpdate: usernameUpdate,
-        lastUpdate: lastUpdate,
-        firstUpdate: firstUpdate,
-        emailUpdate: emailUpdate,
-      }).then((response) => {
+      Axios.put(
+        `https://threado-server.herokuapp.com/updateProfile/${currentUser.userID}`,
+        {
+          usernameUpdate: usernameUpdate,
+          lastUpdate: lastUpdate,
+          firstUpdate: firstUpdate,
+          emailUpdate: emailUpdate,
+        }
+      ).then((response) => {
         console.log(response);
       });
     }

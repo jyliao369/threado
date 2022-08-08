@@ -51,7 +51,7 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
   };
 
   const bookmarkPost = () => {
-    Axios.post(`http://localhost:3001/addBookmark`, {
+    Axios.post(`https://threado-server.herokuapp.com/addBookmark`, {
       postID: postID,
       userID: currentUser.userID,
       username: currentUser.username,
@@ -64,7 +64,7 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
   };
 
   const likePost = () => {
-    Axios.post(`http://localhost:3001/likePost/${postID}`, {
+    Axios.post(`https://threado-server.herokuapp.com/likePost/${postID}`, {
       userID: currentUser.userID,
       username: currentUser.username,
       lastName: currentUser.lastName,
@@ -76,16 +76,18 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
   };
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/post/${postID}`, {}).then((response) => {
-      console.log("hello");
-      console.log(response.data);
-      setPostOP(response.data[0].username);
-      setPostTitle(response.data[0].postTitle);
-      setPostBody(response.data[0].postBody);
-      setPostSubthreadId(response.data[0].subthreadID);
-      setPostTitleLike(response.data[0].likeTotal);
-      setPostTotalComments(response.data[0].commentTotal);
-    });
+    Axios.get(`https://threado-server.herokuapp.com/post/${postID}`, {}).then(
+      (response) => {
+        console.log("hello");
+        console.log(response.data);
+        setPostOP(response.data[0].username);
+        setPostTitle(response.data[0].postTitle);
+        setPostBody(response.data[0].postBody);
+        setPostSubthreadId(response.data[0].subthreadID);
+        setPostTitleLike(response.data[0].likeTotal);
+        setPostTotalComments(response.data[0].commentTotal);
+      }
+    );
 
     Axios.get(
       `https://threado-server.herokuapp.com/getPostComment/${postID}`,
