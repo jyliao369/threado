@@ -14,19 +14,20 @@ const Bookmark = () => {
   const [userBookmark, setUserBookmark] = useState([]);
 
   const unBookmark = (bookmarkID) => {
-    Axios.delete(`http://localhost:3001/deleteBookmark/${bookmarkID}`, {}).then(
-      (response) => {
-        // console.log(response);
-        Axios.get(
-          `https://threado-server.herokuapp.com/allUserBookmark/${userID}`,
-          {
-            userID: userID,
-          }
-        ).then((response) => {
-          setUserBookmark(response.data.reverse());
-        });
-      }
-    );
+    Axios.delete(
+      `https://threado-server.herokuapp.com/deleteBookmark/${bookmarkID}`,
+      {}
+    ).then((response) => {
+      // console.log(response);
+      Axios.get(
+        `https://threado-server.herokuapp.com/allUserBookmark/${userID}`,
+        {
+          userID: userID,
+        }
+      ).then((response) => {
+        setUserBookmark(response.data.reverse());
+      });
+    });
   };
 
   useEffect(() => {
@@ -104,9 +105,11 @@ const Bookmark = () => {
                   <div className="likeCom">
                     <button>
                       <FavoriteBorderOutlinedIcon />
+                      {post.likeTotal}
                     </button>
                     <button>
                       <ChatBubbleOutlineOutlinedIcon />
+                      {post.commentTotal}
                     </button>
                   </div>
                 </div>

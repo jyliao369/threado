@@ -12,7 +12,7 @@ const Explore = () => {
 
   useEffect(() => {
     Axios.get("https://threado-server.herokuapp.com/", {}).then((response) => {
-      // console.log(response.data.reverse());
+      console.log(response.data.reverse());
       setAllPosts(response.data.reverse());
     });
   }, []);
@@ -72,9 +72,11 @@ const Explore = () => {
               <div className="likeCom">
                 <button>
                   <FavoriteBorderOutlinedIcon />
+                  {post.likeTotal}
                 </button>
                 <button>
                   <ChatBubbleOutlineOutlinedIcon />
+                  {post.commentTotal}
                 </button>
               </div>
             </div>
