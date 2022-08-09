@@ -144,9 +144,6 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
                   <ChatBubbleOutlineOutlinedIcon />
                   {postTotalComments}
                 </button>
-                <button>
-                  <BookmarkBorderOutlined />
-                </button>
               </div>
             ) : (
               <div className="likeCom">

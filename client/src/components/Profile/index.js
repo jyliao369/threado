@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
@@ -9,6 +9,8 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
 const Profile = ({ currentUser }) => {
+  const { userID } = useParams();
+
   const [usersPosts, setUsersPosts] = useState([]);
   const [usersComments, setUsersComments] = useState([]);
   const [usersThreads, setUsersThreads] = useState([]);
@@ -40,16 +42,15 @@ const Profile = ({ currentUser }) => {
   };
 
   useEffect(() => {
-    Axios.get(
-      `https://threado-server.herokuapp.com/getMyPosts/${currentUser.userID}`,
-      {}
-    ).then((response) => {
-      // console.log(response.data);
-      setUsersPosts(response.data);
-    });
+    Axios.get(`http://localhost:3001/getMyPosts/${userID}`, {}).then(
+      (response) => {
+        // console.log(response.data);
+        setUsersPosts(response.data);
+      }
+    );
 
     Axios.get(
-      `https://threado-server.herokuapp.com/getUserCom/${currentUser.userID}`,
+      `https://threado-server.herokuapp.com/getUserCom/${userID}`,
       {}
     ).then((response) => {
       // console.log(response.data);
@@ -57,7 +58,7 @@ const Profile = ({ currentUser }) => {
     });
 
     Axios.get(
-      `https://threado-server.herokuapp.com/getUserThreads/${currentUser.userID}`,
+      `https://threado-server.herokuapp.com/getUserThreads/${userID}`,
       {}
     ).then((response) => {
       // console.log(response.data);
@@ -156,9 +157,11 @@ const Profile = ({ currentUser }) => {
                   <div className="likeCom">
                     <button>
                       <FavoriteBorderOutlinedIcon />
+                      {post.likeTotal}
                     </button>
                     <button>
                       <ChatBubbleOutlineOutlinedIcon />
+                      {post.commentTotal}
                     </button>
                   </div>
                 </div>

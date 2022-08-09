@@ -73,16 +73,15 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
       serCurThreadDesc(response.data[0].threadDesc);
     });
 
-    Axios.get(
-      `https://threado-server.herokuapp.com/subthread/${subthreadID}`,
-      {}
-    ).then((response) => {
-      if (response.data.length > 0) {
-        setThreadPost(response.data.reverse());
-      } else {
-        setThreadPost([]);
+    Axios.get(`http://localhost:3001/getSubthreadPost/${subthreadID}`, {}).then(
+      (response) => {
+        if (response.data.length > 0) {
+          setThreadPost(response.data.reverse());
+        } else {
+          setThreadPost([]);
+        }
       }
-    });
+    );
   }, []);
 
   return (
@@ -101,10 +100,16 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
           ) : (
             <div className="addPostBtnCont">
               <div className="addPostBtn">
-                <button onClick={() => openPostForm()}>
+                <button
+                  onClick={() => openPostForm()}
+                  style={{ cursor: "pointer" }}
+                >
                   <AddCommentOutlinedIcon />
                 </button>
-                <button onClick={() => joinThread()}>
+                <button
+                  onClick={() => joinThread()}
+                  style={{ cursor: "pointer" }}
+                >
                   <GroupAddOutlinedIcon />
                 </button>
               </div>
@@ -176,50 +181,62 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
       )}
 
       <div>
-        {threadPost.map((post) => (
-          <div key={post.postID} className="postCont">
-            <div className="postProfileIconCont">
-              <div className="postProfileIconBorder">
-                <div className="postProfileIconBody"></div>
-              </div>
-              <div className="postUsername">
-                <p>{post.username}</p>
-              </div>
-            </div>
-
-            <div className="generalPostCont">
-              <div className="generalPostTitleCont">
-                <div className="generalPostTitleBorder">
-                  <div className="generalPostTitleBody">
-                    <h4>{post.postTitle.slice(0, 60)}</h4>
-                  </div>
-                </div>
-              </div>
-              <Link to={`/post/${post.postID}`}>
-                <div className="generalPostBorder">
-                  <div className="generalPostBody">
-                    <p>{post.postBody}</p>
-                  </div>
-                </div>
-              </Link>
-              <div className="generalPostDateTimeCont">
-                <div className="generalPostDateTimeBorder">
-                  <div className="generalPostDateTimeBody">
-                    <p>Posted On: *Time goes here</p>
-                  </div>
-                </div>
-              </div>
-              <div className="likeCom">
-                <button>
-                  <FavoriteBorderOutlinedIcon />
-                </button>
-                <button>
-                  <ChatBubbleOutlineOutlinedIcon />
-                </button>
+        {threadPost.length <= 0 ? (
+          <div className="notificationCont">
+            <div className="notificationBorder">
+              <div className="notificationBody">
+                <p>There are no posts here. Share your thoughts!!</p>
               </div>
             </div>
           </div>
-        ))}
+        ) : (
+          <>
+            {threadPost.map((post) => (
+              <div key={post.postID} className="postCont">
+                <div className="postProfileIconCont">
+                  <div className="postProfileIconBorder">
+                    <div className="postProfileIconBody"></div>
+                  </div>
+                  <div className="postUsername">
+                    <p>{post.username}</p>
+                  </div>
+                </div>
+
+                <div className="generalPostCont">
+                  <div className="generalPostTitleCont">
+                    <div className="generalPostTitleBorder">
+                      <div className="generalPostTitleBody">
+                        <h4>{post.postTitle.slice(0, 60)}</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <Link to={`/post/${post.postID}`}>
+                    <div className="generalPostBorder">
+                      <div className="generalPostBody">
+                        <p>{post.postBody}</p>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="generalPostDateTimeCont">
+                    <div className="generalPostDateTimeBorder">
+                      <div className="generalPostDateTimeBody">
+                        <p>Posted On: *Time goes here</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="likeCom">
+                    <button>
+                      <FavoriteBorderOutlinedIcon />
+                    </button>
+                    <button>
+                      <ChatBubbleOutlineOutlinedIcon />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

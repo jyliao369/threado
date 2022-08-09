@@ -76,7 +76,7 @@ function App() {
               }
             />
             <Route
-              path="/profile"
+              path="/profile/:userID"
               element={
                 <>
                   <Profile currentUser={currentUser} />

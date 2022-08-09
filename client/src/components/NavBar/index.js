@@ -51,7 +51,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
           <></>
         ) : (
           <>
-            <Link to="/profile">
+            <Link to={`/profile/${currentUser.userID}`}>
               <div>
                 <AccountCircleOutlinedIcon />
                 <p>Profile</p>
