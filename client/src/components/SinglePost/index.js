@@ -51,7 +51,7 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
   };
 
   const bookmarkPost = () => {
-    Axios.post(`http://localhost:3001/addBookmark`, {
+    Axios.post(`https://threado-server.herokuapp.com/addBookmark`, {
       postID: postID,
       userID: currentUser.userID,
       username: currentUser.username,
@@ -80,7 +80,7 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
   useEffect(() => {
     Axios.get(`https://threado-server.herokuapp.com/post/${postID}`, {}).then(
       (response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPostOP(response.data[0].username);
         setPostTitle(response.data[0].postTitle);
         setPostBody(response.data[0].postBody);

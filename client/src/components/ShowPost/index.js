@@ -12,7 +12,7 @@ const ShowPost = () => {
 
   useEffect(() => {
     Axios.get("https://threado-server.herokuapp.com/", {}).then((response) => {
-      console.log(response.data.reverse());
+      // console.log(response.data.reverse());
       setAllPosts(response.data.reverse());
     });
   }, []);

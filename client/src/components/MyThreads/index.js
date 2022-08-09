@@ -14,25 +14,28 @@ const MyThreads = () => {
   const [userThreads, setuserThreads] = useState([]);
 
   const unjoinThread = (mythreadsID) => {
-    Axios.delete(`http://localhost:3001/unjoinThread/${mythreadsID}`, {}).then(
-      (response) => {
-        console.log(response);
-        Axios.get(`http://localhost:3001/getJoinedThreads/${userID}`, {}).then(
-          (response) => {
-            setuserThreads(response.data.reverse());
-          }
-        );
-      }
-    );
+    Axios.delete(
+      `https://threado-server.herokuapp.com/unjoinThread/${mythreadsID}`,
+      {}
+    ).then((response) => {
+      console.log(response);
+      Axios.get(
+        `https://threado-server.herokuapp.com/getJoinedThreads/${userID}`,
+        {}
+      ).then((response) => {
+        setuserThreads(response.data.reverse());
+      });
+    });
   };
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/getJoinedThreads/${userID}`, {}).then(
-      (response) => {
-        // console.log(response.data);
-        setuserThreads(response.data.reverse());
-      }
-    );
+    Axios.get(
+      `https://threado-server.herokuapp.com/getJoinedThreads/${userID}`,
+      {}
+    ).then((response) => {
+      // console.log(response.data);
+      setuserThreads(response.data.reverse());
+    });
   }, []);
 
   return (

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = ({ setCurrentUser, setIsLoggedIn }) => {
+const Login = ({ currentUser, setCurrentUser, setIsLoggedIn }) => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPass, setLoginPass] = useState("");
 
@@ -29,7 +29,7 @@ const Login = ({ setCurrentUser, setIsLoggedIn }) => {
           console.log(response.data);
           setCurrentUser(response.data[0]);
           setIsLoggedIn(true);
-          navToProfile("/profile");
+          navToProfile(`/`);
         }
       });
     }

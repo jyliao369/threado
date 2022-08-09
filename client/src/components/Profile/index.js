@@ -42,12 +42,13 @@ const Profile = ({ currentUser }) => {
   };
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/getMyPosts/${userID}`, {}).then(
-      (response) => {
-        // console.log(response.data);
-        setUsersPosts(response.data);
-      }
-    );
+    Axios.get(
+      `https://threado-server.herokuapp.com/getMyPosts/${userID}`,
+      {}
+    ).then((response) => {
+      // console.log(response.data);
+      setUsersPosts(response.data);
+    });
 
     Axios.get(
       `https://threado-server.herokuapp.com/getUserCom/${userID}`,
@@ -82,27 +83,46 @@ const Profile = ({ currentUser }) => {
       <div className="profileNav">
         <div className="profileNavBtnBorder">
           <div className="profileNavBtnBody">
-            <button onClick={() => getUserPost()}>Posts</button>
+            <button onClick={() => getUserPost()} style={{ cursor: "pointer" }}>
+              Posts
+            </button>
           </div>
         </div>
         <div className="profileNavBtnBorder">
           <div className="profileNavBtnBody">
-            <button onClick={() => getUserComment()}>Comments</button>
+            <button
+              onClick={() => getUserComment()}
+              style={{ cursor: "pointer" }}
+            >
+              Comments
+            </button>
           </div>
         </div>
         <div className="profileNavBtnBorder">
           <div className="profileNavBtnBody">
-            <button onClick={() => getUserThreads()}>My Threads</button>
+            <button
+              onClick={() => getUserThreads()}
+              style={{ cursor: "pointer" }}
+            >
+              My Threads
+            </button>
           </div>
         </div>
         <div className="profileNavBtnBorder">
           <div className="profileNavBtnBody">
-            <button onClick={() => getFollowing()}>Following</button>
+            <button
+              onClick={() => getFollowing()}
+              style={{ cursor: "pointer" }}
+            >
+              Following
+            </button>
           </div>
         </div>
         <div className="profileNavBtnBorder">
           <div className="profileNavBtnBody">
-            <button onClick={() => getFollower()}>Followers</button>
+            <button onClick={() => getFollower()} style={{ cursor: "pointer" }}>
+              Followers
+            </button>
           </div>
         </div>
       </div>

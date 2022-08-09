@@ -73,15 +73,16 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
       serCurThreadDesc(response.data[0].threadDesc);
     });
 
-    Axios.get(`http://localhost:3001/getSubthreadPost/${subthreadID}`, {}).then(
-      (response) => {
-        if (response.data.length > 0) {
-          setThreadPost(response.data.reverse());
-        } else {
-          setThreadPost([]);
-        }
+    Axios.get(
+      `https://threado-server.herokuapp.com/getSubthreadPost/${subthreadID}`,
+      {}
+    ).then((response) => {
+      if (response.data.length > 0) {
+        setThreadPost(response.data.reverse());
+      } else {
+        setThreadPost([]);
       }
-    );
+    });
   }, []);
 
   return (
