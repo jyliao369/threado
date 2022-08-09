@@ -967,6 +967,20 @@
 .notificationCont {
   display: flex;
 }
+.deleteBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.deleteBtn button {
+  display: flex;
+  padding: 4px;
+  background: white;
+  border-style: solid;
+  border-width: thick;
+  position: absolute;
+  z-index: 1;
+  margin: -16px 2% 0px 0px;
+}
 
 /* #SETTINGS */
 .updateFormBorder {

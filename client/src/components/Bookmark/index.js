@@ -6,11 +6,28 @@ import { Link, useParams } from "react-router-dom";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 
 const Bookmark = () => {
   const { userID } = useParams();
 
   const [userBookmark, setUserBookmark] = useState([]);
+
+  const unBookmark = (bookmarkID) => {
+    Axios.delete(`http://localhost:3001/deleteBookmark/${bookmarkID}`, {}).then(
+      (response) => {
+        // console.log(response);
+        Axios.get(
+          `https://threado-server.herokuapp.com/allUserBookmark/${userID}`,
+          {
+            userID: userID,
+          }
+        ).then((response) => {
+          setUserBookmark(response.data.reverse());
+        });
+      }
+    );
+  };
 
   useEffect(() => {
     Axios.get(
@@ -61,6 +78,14 @@ const Bookmark = () => {
                         <h4>{post.postTitle.slice(0, 60)}</h4>
                       </div>
                     </div>
+                  </div>
+                  <div className="deleteBtn">
+                    <button
+                      onClick={() => unBookmark(post.bookmarkID)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <DeleteForeverOutlinedIcon />
+                    </button>
                   </div>
                   <Link to={`/post/${post.postID}`}>
                     <div className="generalPostBorder">
