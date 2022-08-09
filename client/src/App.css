@@ -962,6 +962,22 @@
   flex-direction: column;
   align-items: center;
 }
+.deleteThreadBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.deleteThreadBtn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: white;
+  border-style: solid;
+  border-width: thick;
+  position: absolute;
+  z-index: 1;
+  margin: -15px 1% 0px 0px;
+}
 
 /* #USERBOOKMARKS */
 .notificationCont {

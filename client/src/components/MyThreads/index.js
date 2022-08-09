@@ -6,20 +6,33 @@ import { Link, useParams } from "react-router-dom";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 
 const MyThreads = () => {
   const { userID } = useParams();
 
   const [userThreads, setuserThreads] = useState([]);
 
+  const unjoinThread = (mythreadsID) => {
+    Axios.delete(`http://localhost:3001/unjoinThread/${mythreadsID}`, {}).then(
+      (response) => {
+        console.log(response);
+        Axios.get(`http://localhost:3001/getJoinedThreads/${userID}`, {}).then(
+          (response) => {
+            setuserThreads(response.data.reverse());
+          }
+        );
+      }
+    );
+  };
+
   useEffect(() => {
-    Axios.get(
-      `https://threado-server.herokuapp.com/getUserThreads/${userID}`,
-      {}
-    ).then((response) => {
-      // console.log(response.data.reverse());
-      setuserThreads(response.data.reverse());
-    });
+    Axios.get(`http://localhost:3001/getJoinedThreads/${userID}`, {}).then(
+      (response) => {
+        // console.log(response.data);
+        setuserThreads(response.data.reverse());
+      }
+    );
   }, []);
 
   return (
@@ -49,6 +62,14 @@ const MyThreads = () => {
                       <h3>/{thread.threadName}</h3>
                     </div>
                   </div>
+                </div>
+                <div className="deleteThreadBtn">
+                  <button
+                    onClick={() => unjoinThread(thread.mythreadsID)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <DeleteForeverOutlinedIcon />
+                  </button>
                 </div>
                 <div className="threadBorder">
                   <div className="threadBody">
