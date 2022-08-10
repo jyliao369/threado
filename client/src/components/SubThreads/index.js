@@ -54,7 +54,7 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
     <div className="subthreads">
       <div className="pageBanner">
         <FormatListBulletedOutlinedIcon />
-        <p>SubThreads</p>
+        <p>Threads</p>
       </div>
 
       <div className="searchCreateBtn">

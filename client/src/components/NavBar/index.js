@@ -27,7 +27,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
   return (
     <div className="navbarPage">
       <div className="navbar">
-        <p>ThreadOh!!</p>
+        <h3>ThreadOh!!</h3>
         <Link to="/">
           <div>
             <HomeOutlinedIcon />
@@ -84,13 +84,15 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
           <Link to="/login">
             <div className="logReg">
               <LoginOutlinedIcon />
-              <p>Login</p>
             </div>
           </Link>
         ) : (
-          <div className="logReg" style={{ cursor: "pointer" }}>
+          <div
+            className="logReg"
+            onClick={logoutUser}
+            style={{ cursor: "pointer" }}
+          >
             <LogoutOutlinedIcon />
-            <p onClick={logoutUser}>Logout</p>
           </div>
         )}
       </div>
