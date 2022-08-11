@@ -37,7 +37,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/threado">
+    <Router>
       <div className="appCont">
         <NavBar
           isLoggedIn={isLoggedIn}
