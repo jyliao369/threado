@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta+Mahee&display=swap");
 * {
   margin: 0px;
   color: black;
   text-decoration: none;
+  font-family: "Mukta Mahee", sans-serif;
 }
 
 .appCont {
@@ -116,6 +118,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #407fae;
 }
 .threadCont {
   width: 85%;
@@ -190,6 +193,9 @@
   border-width: thick;
   border-color: black;
 }
+.threadInfo div p {
+  margin: 0px 5px 0px 5px;
+}
 
 /* #PAGEBANNER */
 .pageBanner {
@@ -198,15 +204,17 @@
   align-items: center;
   padding: 2%;
   border-bottom: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-width: medium;
+  border-color: black;
+  background: #00508c;
 }
 .pageBanner svg {
   font-size: 3rem;
 }
 .pageBanner p {
-  font-size: 25px;
+  font-size: 30px;
   margin: 0px 0px 0px 10px;
+  color: white;
 }
 
 /* #GENERALTHEMEOFCOMMENT*/
@@ -215,7 +223,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  padding: 20px 10px 20px 10px;
+  padding: 15px 10px 20px 10px;
 }
 .commentMainCont {
   display: flex;
@@ -255,7 +263,7 @@
 
 /* #RANDOMNEWS */
 .randNewsCont {
-  padding: 25px 20px 15px 20px;
+  padding: 15px 20px 35px 20px;
 }
 .randTitleCont {
   display: flex;
@@ -318,8 +326,9 @@
   width: 20%;
   height: 100vh;
   border-right: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-width: medium;
+  border-color: black;
+  background: #5990b9;
   position: fixed;
 }
 .navbar {
@@ -339,7 +348,7 @@
   font-size: 2.5rem;
 }
 .navbar div p {
-  font-size: 15px;
+  font-size: 20px;
 }
 .logReg {
   display: flex;
@@ -354,7 +363,9 @@
 /* #MAINPAGE */
 .mainPage {
   width: 100%;
+  height: 100vh;
   margin: 0% 30% 0% 20.08%;
+  background: #407fae;
 }
 
 /* #RANDOMNEWSPAGE */
@@ -365,8 +376,9 @@
   width: 30%;
   height: 100vh;
   border-left: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-width: medium;
+  border-color: black;
+  background: #5990b9;
   position: fixed;
   right: 0;
   overflow-y: scroll;
@@ -445,6 +457,11 @@
   border: none;
   outline: none;
   background: white;
+}
+
+/* #SHOWPOSTPAGE */
+.showPostContainer {
+  background: #407fae;
 }
 
 /* #REGISTER */
@@ -557,10 +574,11 @@
 .searchCreateBtn {
   display: flex;
   flex-direction: column;
-  padding: 20px 35px 25px 25px;
+  padding: 20px 35px 35px 25px;
   border-bottom: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-width: medium;
+  border-color: black;
+  background: #19659e;
 }
 .searchCreateBtn input {
   width: 100%;
@@ -587,7 +605,8 @@
   margin: -25px 50px 0px 0px;
 }
 .searchCreate button {
-  padding: 5px 10px 5px 10px;
+  display: flex;
+  padding: 5px;
   margin: 0px 0px 0px 20px;
   background: white;
   border-style: solid;
@@ -671,8 +690,9 @@
   display: flex;
   justify-content: center;
   border-bottom: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-width: medium;
+  border-color: black;
+  background: #00508c;
 }
 .addPostBtnCont {
   display: flex;
@@ -757,12 +777,16 @@
   border-width: thick;
   background: white;
 }
+.threadsPostCont {
+  background: #407fae;
+}
 
 /* #SINGLEPOSTPAGE */
 .singlePostCont {
   border-bottom: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-width: medium;
+  border-color: black;
+  background: #00508c;
   padding: 0px 0px 20px 0px;
 }
 .commentFormBtnCont {
@@ -827,6 +851,9 @@
   background: white;
   cursor: pointer;
 }
+.singlePostComment {
+  background: #407fae;
+}
 
 /* #EXPLOREPAGE */
 .searchInput {
@@ -834,8 +861,9 @@
   flex-direction: column;
   padding: 20px 35px 30px 20px;
   border-bottom: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-width: medium;
+  border-color: black;
+  background: #19659e;
 }
 .searchInputBorder {
   width: 100%;
@@ -849,7 +877,7 @@
   align-items: stretch;
   background: white;
   clip-path: polygon(0% 5%, 97% 5%, 100% 95%, 3% 89%);
-  padding: 25px 40px 30px 35px;
+  padding: 15px 40px 15px 35px;
 }
 .searchInputBody input {
   border: none;
@@ -874,13 +902,17 @@
   border-style: solid;
   border-width: thick;
 }
+.explorePostPage {
+  background: #407fae;
+}
 
 /* #PROFILE */
 .accountBanner {
   border-bottom: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-width: medium;
+  border-color: black;
   padding: 0px 0px 40px 0px;
+  background: white;
 }
 .banner {
   height: 200px;
@@ -907,9 +939,10 @@
   display: flex;
   justify-content: space-evenly;
   border-bottom: solid;
-  border-width: thin;
-  border-color: lightgray;
+  border-bottom: solid;
+  border-width: medium;
   padding: 15px 0px 15px 0px;
+  background: #19659e;
 }
 .profileNavBtnBorder {
   background: black;
@@ -928,8 +961,8 @@
 }
 .allUsersPost {
   flex-direction: column;
+  background: #407fae;
 }
-
 #allUsersPost {
   display: flex;
 }

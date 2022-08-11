@@ -16,6 +16,7 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
 
   const [curThreadName, setCurThreadName] = useState("");
   const [curThreadDesc, serCurThreadDesc] = useState("");
+  const [curTotalUser, setCurTotalUser] = useState(0);
 
   const [threadPost, setThreadPost] = useState([]);
 
@@ -54,6 +55,7 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
   const joinThread = () => {
     Axios.post(`https://threado-server.herokuapp.com/joinThread`, {
       userID: currentUser.userID,
+      username: currentUser.username,
       subthreadID: subthreadID,
       threadName: curThreadName,
       threadDesc: curThreadDesc,
@@ -67,10 +69,11 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
       `https://threado-server.herokuapp.com/getSubthread/${subthreadID}`,
       {}
     ).then((response) => {
-      // console.log(response.data[0]);
+      console.log(response.data[0]);
 
       setCurThreadName(response.data[0].threadName);
       serCurThreadDesc(response.data[0].threadDesc);
+      setCurTotalUser(response.data[0].totalUser);
     });
 
     Axios.get(
@@ -78,6 +81,7 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
       {}
     ).then((response) => {
       if (response.data.length > 0) {
+        console.log(response.data);
         setThreadPost(response.data.reverse());
       } else {
         setThreadPost([]);
@@ -125,7 +129,7 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
             <div className="threadInfo">
               <div>
                 <GroupsOutlinedIcon />
-                <p>users</p>
+                <p>{curTotalUser}</p>
               </div>
               <div>
                 <CalendarMonthOutlinedIcon />
@@ -181,7 +185,7 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
         </div>
       )}
 
-      <div>
+      <div className="threadsPostCont">
         {threadPost.length <= 0 ? (
           <div className="notificationCont">
             <div className="notificationBorder">
@@ -228,9 +232,11 @@ const SubThreadsPage = ({ currentUser, isLoggedIn }) => {
                   <div className="likeCom">
                     <button>
                       <FavoriteBorderOutlinedIcon />
+                      <p>{post.likeTotal}</p>
                     </button>
                     <button>
                       <ChatBubbleOutlineOutlinedIcon />
+                      <p>{post.commentTotal}</p>
                     </button>
                   </div>
                 </div>

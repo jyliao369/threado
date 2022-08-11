@@ -29,7 +29,7 @@ const Login = ({ currentUser, setCurrentUser, setIsLoggedIn }) => {
           console.log(response.data);
           setCurrentUser(response.data[0]);
           setIsLoggedIn(true);
-          navToProfile(`/`);
+          navToProfile(`/threado`);
         }
       });
     }

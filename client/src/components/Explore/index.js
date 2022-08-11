@@ -79,7 +79,7 @@ const Explore = () => {
         </div>
       </div>
 
-      <div>
+      <div className="explorePostPage">
         {showedPosts.map((post) => (
           <div key={post.postID} className="postCont">
             <div className="postProfileIconCont">

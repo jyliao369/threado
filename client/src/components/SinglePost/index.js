@@ -201,7 +201,7 @@ const SinglePost = ({ isLoggedIn, currentUser }) => {
         </div>
       </div>
 
-      <div>
+      <div className="singlePostComment">
         {allPostComment.length <= 0 ? (
           <div className="notificationCont">
             <div className="notificationBorder">

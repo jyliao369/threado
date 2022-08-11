@@ -44,7 +44,7 @@ const Register = ({ setIsLoggedIn, setCurrentUser }) => {
           // console.log(response.data[0]);
           setCurrentUser(response.data[0]);
           setIsLoggedIn(true);
-          navToProfile("/");
+          navToProfile("/threado");
         });
       });
     }

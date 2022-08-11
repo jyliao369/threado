@@ -6,12 +6,33 @@ import Axios from "axios";
 import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 
 const SubThreads = ({ currentUser, isLoggedIn }) => {
   const [threadName, setThreadName] = useState("");
   const [threadDesc, setThreadDesc] = useState("");
 
+  const [searchThreadWord, setSearchThreadWord] = useState("");
+
   const [threadList, setThreadList] = useState([]);
+  const [showedThreadList, setShowThreadList] = useState([]);
+
+  const searchThread = () => {
+    let filteredThreads = [];
+
+    for (let a = 0; a < threadList.length; a++) {
+      if (threadList[a].threadName.includes(searchThreadWord)) {
+        filteredThreads.push(threadList[a]);
+      } else if (threadList[a].threadDesc.includes(searchThreadWord)) {
+        filteredThreads.push(threadList[a]);
+      } else {
+        console.log(false);
+      }
+    }
+
+    setShowThreadList(filteredThreads);
+  };
 
   const createThread = () => {
     Axios.post(`https://threado-server.herokuapp.com/createThread`, {
@@ -20,10 +41,10 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
       threadName: threadName,
       threadDesc: threadDesc,
     }).then((response) => {
-      console.log(response);
+      // console.log(response);
       Axios.get(`https://threado-server.herokuapp.com/allThreads`, {}).then(
         (response) => {
-          console.log(response);
+          // console.log(response);
           setThreadList(response.data.reverse());
           setThreadName("");
           setThreadDesc("");
@@ -46,6 +67,7 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
       (response) => {
         // console.log(response.data);
         setThreadList(response.data.reverse());
+        setShowThreadList(response.data.reverse());
       }
     );
   }, []);
@@ -60,17 +82,38 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
       <div className="searchCreateBtn">
         <div className="searchInputBorder">
           <div className="searchInputBody">
-            <input placeholder="Search..." />
+            <input
+              value={searchThreadWord}
+              onChange={(e) => setSearchThreadWord(e.target.value)}
+              placeholder="Search..."
+            />
           </div>
         </div>
 
         <div className="searchCreateCont">
           <div className="searchCreate">
-            <button>Search</button>
+            {searchThreadWord === "" ? (
+              <button disabled={true}>
+                <SearchOutlinedIcon />
+              </button>
+            ) : (
+              <button
+                onClick={() => searchThread()}
+                style={{ cursor: "pointer" }}
+              >
+                <SearchOutlinedIcon />
+              </button>
+            )}
+
             {isLoggedIn === false ? (
               <></>
             ) : (
-              <button onClick={() => openCreateThread()}>+Create</button>
+              <button
+                onClick={() => openCreateThread()}
+                style={{ cursor: "pointer" }}
+              >
+                <CreateOutlinedIcon />
+              </button>
             )}
           </div>
         </div>
@@ -114,7 +157,7 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
       )}
 
       <div className="allThreads">
-        {threadList.map((thread) => (
+        {showedThreadList.map((thread) => (
           <div key={thread.subthreadID} className="threadCont">
             <div className="threadNameCont">
               <div className="threadNameBorder">
@@ -134,6 +177,7 @@ const SubThreads = ({ currentUser, isLoggedIn }) => {
               <div className="threadInfo">
                 <div>
                   <GroupsOutlinedIcon />
+                  <p>{thread.totalUser}</p>
                 </div>
                 <div>
                   <CalendarMonthOutlinedIcon />
