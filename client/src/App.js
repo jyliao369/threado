@@ -49,7 +49,7 @@ function App() {
         <div className="mainPage">
           <Routes>
             <Route
-              path="/threado"
+              path="/"
               element={
                 <>
                   <ShowPost />

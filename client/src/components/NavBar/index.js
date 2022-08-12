@@ -18,7 +18,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
       // console.log(response);
       setIsLoggedIn(false);
       setCurrentUser([]);
-      navToHome("/threado");
+      navToHome("/");
     });
   };
 
@@ -28,7 +28,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
     <div className="navbarPage">
       <div className="navbar">
         <h3>ThreadOh!!</h3>
-        <Link to="/threado">
+        <Link to="/">
           <div>
             <HomeOutlinedIcon />
             <p>Home</p>
